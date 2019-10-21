@@ -1,0 +1,11 @@
+Terminator = CR LF;
+
+
+getTempSetRBV {
+	out "AUTO TSET?";
+    in "%f";
+}
+
+setTempPoint {
+	out "AUTO TSET=%f";
+}

@@ -9,3 +9,38 @@ record(bo, "$(P)SIM")
     field(ONAM, "YES")
 	field(VAL, "$(RECSIM=0)")	
 }
+
+record(bo, "$(P)DISABLE")
+{
+    field(DESC, "Disable comms")
+    field(PINI, "YES")
+    field(VAL, "$(DISABLE=0)")
+    field(OMSL, "supervisory")
+    field(ZNAM, "COMMS ENABLED")
+    field(ONAM, "COMMS DISABLED")
+}
+
+record(ai, "$(P)TEMP:SP:RBV")
+{
+	field(DESC, "Temperature setpoint readback")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getTempSetRBV $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)TEMP:SP")
+{
+	field(DESC, "Temperature setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setTempPoint $(PORT)")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
