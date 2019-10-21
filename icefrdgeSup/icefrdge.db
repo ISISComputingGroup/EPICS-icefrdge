@@ -1,0 +1,11 @@
+######### Simulation SECTION ##############
+
+record(bo, "$(P)SIM") 
+{
+	field(DESC, "For the recsim")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+	field(VAL, "$(RECSIM=0)")	
+}
