@@ -6,6 +6,11 @@ getTempSetRBV {
     in "%f";
 }
 
+getTemperature {
+	out "TEMPS?";
+	in "%f"
+}
+
 setTempPoint {
 	out "AUTO TSET=%f";
 }

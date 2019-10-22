@@ -33,6 +33,19 @@ record(ai, "$(P)TEMP:SP:RBV")
 	info(archive, "VAL")
 }
 
+record(ai, "$(P)TEMP")
+{
+	field(DESC, "Temperature of the dilution fridge")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getTemperature $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 record(ao, "$(P)TEMP:SP")
 {
 	field(DESC, "Temperature setpoint")
