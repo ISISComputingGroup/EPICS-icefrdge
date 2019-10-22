@@ -1,4 +1,4 @@
-Terminator = CR LF;
+Terminator = LF;
 
 
 getTempSetRBV {
