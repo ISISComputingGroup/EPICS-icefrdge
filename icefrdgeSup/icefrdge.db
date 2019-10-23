@@ -66,6 +66,22 @@ record(ai, "$(P)AUTO:TEMP:SP:RBV")
     field(SDIS, "$(P)DISABLE")
 }
 
+record(ai, "$(P)MANUAL:TEMP")
+{
+	field(DESC, "Temperature under manual mode")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getManualTemperature $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:MANUAL:TEMP")
+    field(SDIS, "$(P)DISABLE")
+}
+
 record(ao, "$(P)MANUAL:TEMP:SP")
 {
 	field(DESC, "Manual mode temperature setpoint")

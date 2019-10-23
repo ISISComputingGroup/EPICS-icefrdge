@@ -1,11 +1,5 @@
 Terminator = LF;
 
-
-getAutoTempSetRBV {
-	out "AUTO TSET?";
-    in "%f";
-}
-
 getAutoTemperature {
 	out "TEMPS?";
 	in "%f"
@@ -13,6 +7,16 @@ getAutoTemperature {
 
 setAutoTempPoint {
 	out "AUTO TSET=%f";
+}
+
+getAutoTempSetRBV {
+	out "AUTO TSET?";
+    in "%f";
+}
+
+getManualTemperature {
+	out "MANUAL TEMP?";
+	in "%f";
 }
 
 setManualTempPoint {
