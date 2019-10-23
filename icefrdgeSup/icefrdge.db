@@ -20,22 +20,6 @@ record(bo, "$(P)DISABLE")
     field(ONAM, "COMMS DISABLED")
 }
 
-record(ai, "$(P)AUTO:TEMP:SP:RBV")
-{
-	field(DESC, "Temperature setpoint readback")
-	field(DTYP, "stream")
-    field(INP, "@icefrdge.proto getAutoTempSetRBV $(PORT)")
-	field(SCAN, "1 second")
-	field(EGU, "K")
-	
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-
-	field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:AUTO:TEMP:SP:RBV")
-    field(SDIS, "$(P)DISABLE")
-}
-
 record(ai, "$(P)AUTO:TEMP")
 {
 	field(DESC, "Temperature of the dilution fridge")
@@ -64,6 +48,22 @@ record(ao, "$(P)AUTO:TEMP:SP")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:AUTO:TEMP:SP")
+}
+
+record(ai, "$(P)AUTO:TEMP:SP:RBV")
+{
+	field(DESC, "Temperature setpoint readback")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getAutoTempSetRBV $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:AUTO:TEMP:SP:RBV")
+    field(SDIS, "$(P)DISABLE")
 }
 
 record(ao, "$(P)MANUAL:TEMP:SP")
