@@ -20,11 +20,11 @@ record(bo, "$(P)DISABLE")
     field(ONAM, "COMMS DISABLED")
 }
 
-record(ai, "$(P)TEMP:SP:RBV")
+record(ai, "$(P)AUTO:TEMP:SP:RBV")
 {
 	field(DESC, "Temperature setpoint readback")
 	field(DTYP, "stream")
-    field(INP, "@icefrdge.proto getTempSetRBV $(PORT)")
+    field(INP, "@icefrdge.proto getAutoTempSetRBV $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
@@ -33,11 +33,11 @@ record(ai, "$(P)TEMP:SP:RBV")
 	info(archive, "VAL")
 }
 
-record(ai, "$(P)TEMP")
+record(ai, "$(P)AUTO:TEMP")
 {
 	field(DESC, "Temperature of the dilution fridge")
 	field(DTYP, "stream")
-    field(INP, "@icefrdge.proto getTemperature $(PORT)")
+    field(INP, "@icefrdge.proto getAutoTemperature $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
@@ -46,14 +46,38 @@ record(ai, "$(P)TEMP")
 	info(archive, "VAL")
 }
 
-record(ao, "$(P)TEMP:SP")
+record(ao, "$(P)AUTO:TEMP:SP")
 {
 	field(DESC, "Temperature setpoint")
 	field(DTYP, "stream")
-    field(OUT, "@icefrdge.proto setTempPoint $(PORT)")
+    field(OUT, "@icefrdge.proto setAutoTempPoint $(PORT)")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)MANUAL:TEMP:SP")
+{
+	field(DESC, "Manual mode temperature setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setManualTempPoint $(PORT)")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MANUAL:TEMP:SP:RBV")
+{
+	field(DESC, "Manual mode temperature setpoint readback")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getManualTempSetRBV $(PORT)")
+	field(SCAN, "1 second")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
 	
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
+
