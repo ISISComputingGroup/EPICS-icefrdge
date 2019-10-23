@@ -27,10 +27,13 @@ record(ai, "$(P)AUTO:TEMP:SP:RBV")
     field(INP, "@icefrdge.proto getAutoTempSetRBV $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
-	field(SDIS, "$(P)DISABLE")
 	
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:AUTO:TEMP:SP:RBV")
+    field(SDIS, "$(P)DISABLE")
 }
 
 record(ai, "$(P)AUTO:TEMP")
@@ -40,10 +43,13 @@ record(ai, "$(P)AUTO:TEMP")
     field(INP, "@icefrdge.proto getAutoTemperature $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
-	field(SDIS, "$(P)DISABLE")
 	
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:AUTO:TEMP")
+    field(SDIS, "$(P)DISABLE")
 }
 
 record(ao, "$(P)AUTO:TEMP:SP")
@@ -55,6 +61,9 @@ record(ao, "$(P)AUTO:TEMP:SP")
 	field(SDIS, "$(P)DISABLE")
 	
 	info(archive, "VAL")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:AUTO:TEMP:SP")
 }
 
 record(ao, "$(P)MANUAL:TEMP:SP")
@@ -63,7 +72,10 @@ record(ao, "$(P)MANUAL:TEMP:SP")
 	field(DTYP, "stream")
     field(OUT, "@icefrdge.proto setManualTempPoint $(PORT)")
 	field(EGU, "K")
-	field(SDIS, "$(P)DISABLE")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:MANUAL:TEMP:SP")
+    field(SDIS, "$(P)DISABLE")
 	
 	info(archive, "VAL")
 }
@@ -75,9 +87,23 @@ record(ai, "$(P)MANUAL:TEMP:SP:RBV")
     field(INP, "@icefrdge.proto getManualTempSetRBV $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
-	field(SDIS, "$(P)DISABLE")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:MANUAL:TEMP:SP:RBV")
+    field(SDIS, "$(P)DISABLE")
 	
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
+
+#
+# Simulation records
+#
+
+record(ao, "$(P)SIM:MANUAL:TEMP:SP") {
+	
+}
+
+alias("$(P)SIM:MANUAL:TEMP:SP", "$(P)SIM:MANUAL:TEMP:SP:RBV")
+alias("$(P)SIM:MANUAL:TEMP:SP", "$(P)SIM:MANUAL:TEMP")
 
