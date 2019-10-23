@@ -1,7 +1,7 @@
 Terminator = LF;
 
 getAutoTemperature {
-	out "TEMPS?";
+	out "AUTO TEMP?";
 	in "%f"
 }
 
