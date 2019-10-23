@@ -28,12 +28,12 @@ record(ai, "$(P)AUTO:TEMP")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 	
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:AUTO:TEMP")
     field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
 }
 
 record(ao, "$(P)AUTO:TEMP:SP")
@@ -44,10 +44,10 @@ record(ao, "$(P)AUTO:TEMP:SP")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
 	
-	info(archive, "VAL")
-
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:AUTO:TEMP:SP")
+
+    info(archive, "VAL")
 }
 
 record(ai, "$(P)AUTO:TEMP:SP:RBV")
@@ -58,12 +58,12 @@ record(ai, "$(P)AUTO:TEMP:SP:RBV")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 	
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:AUTO:TEMP:SP:RBV")
     field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
 }
 
 record(ai, "$(P)MANUAL:TEMP")
@@ -74,12 +74,12 @@ record(ai, "$(P)MANUAL:TEMP")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:MANUAL:TEMP")
     field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
 }
 
 record(ao, "$(P)MANUAL:TEMP:SP")
