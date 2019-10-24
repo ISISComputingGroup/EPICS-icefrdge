@@ -28,6 +28,36 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):TSET")
 	info(archive, "VAL")
 }
 
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):P:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) proportional setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopProportional($(LOOP_NUM)) $(PORT)")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):P:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):P")
+{
+	field(DESC, "Loop $(LOOP_NUM) proportional readback")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopProportional($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "1 second")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):P")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #

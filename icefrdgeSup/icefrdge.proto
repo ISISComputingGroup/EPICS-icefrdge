@@ -41,3 +41,12 @@ getLoopTempPoint {
 	out "CRYO-TSET\$1?";
 	in "CRYO-TSET\$1=%f";
 }
+
+setLoopProportional {
+	out "CRYO-P=\$1,%f";
+}
+
+getLoopProportional {
+	out "CRYO-P\$1?";
+	in "CRYO-P\$1=%f";
+}
