@@ -203,3 +203,9 @@ record(ao, "$(P)SIM:MANUAL:TEMP:SP") {
 alias("$(P)SIM:MANUAL:TEMP:SP", "$(P)SIM:MANUAL:TEMP:SP:RBV")
 alias("$(P)SIM:MANUAL:TEMP:SP", "$(P)SIM:MANUAL:TEMP")
 
+record(ao, "$(P)SIM:VTI:LOOP1:TSET:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP1:TSET:SP", "$(P)SIM:VTI:LOOP1:TSET")
+
