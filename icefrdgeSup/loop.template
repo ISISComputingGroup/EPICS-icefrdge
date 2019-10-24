@@ -1,0 +1,40 @@
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):TSET:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) temperature setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopTempPoint($(LOOP_NUM)) $(PORT)")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):TSET")
+{
+	field(DESC, "Loop $(LOOP_NUM) temperature setpoint readback")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopTempPoint($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "1 second")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+#
+# Simulation records
+#
+
+record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET")
+
