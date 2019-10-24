@@ -32,3 +32,12 @@ getCryoTemps {
 	out "CRYO-TEMPS?";
 	in "CRYO-TEMPS=%f,%(\$1VTI:TEMP2)f,%(\$1VTI:TEMP3)f,%(\$1VTI:TEMP4)f";
 }
+
+setLoop1TempPoint {
+	out "CRYO-TSET1=1,%f";
+}
+
+getLoop1TempPoint {
+	out "CRYO-TSET1?";
+	in "CRYO-TSET1=%f";
+}
