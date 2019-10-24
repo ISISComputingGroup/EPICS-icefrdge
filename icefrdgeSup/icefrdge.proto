@@ -34,7 +34,7 @@ getCryoTemps {
 }
 
 setLoopTempPoint {
-	out "CRYO-TSET\$1=\$1,%f";
+	out "CRYO-TSET=\$1,%f";
 }
 
 getLoopTempPoint {
