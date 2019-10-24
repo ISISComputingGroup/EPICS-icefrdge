@@ -185,6 +185,36 @@ record(ai, "$(P)VTI:LOOP1:TSET")
 	info(archive, "VAL")
 }
 
+record(ao, "$(P)VTI:LOOP2:TSET:SP")
+{
+	field(DESC, "Loop 2 temperature setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoop2TempPoint $(PORT)")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP2:TSET:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP2:TSET")
+{
+	field(DESC, "Loop 2 temperature setpoint readback")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoop2TempPoint $(PORT)")
+    field(SCAN, "1 second")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP2:TSET")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #

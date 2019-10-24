@@ -41,3 +41,12 @@ getLoop1TempPoint {
 	out "CRYO-TSET1?";
 	in "CRYO-TSET1=%f";
 }
+
+setLoop2TempPoint {
+	out "CRYO-TSET2=2,%f";
+}
+
+getLoop2TempPoint {
+	out "CRYO-TSET2?";
+	in "CRYO-TSET2=%f";
+}
