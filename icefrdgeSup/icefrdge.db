@@ -98,7 +98,7 @@ record(ao, "$(P)MANUAL:TEMP:SP")
 
 record(ai, "$(P)MANUAL:TEMP:SP:RBV")
 {
-	field(DESC, "Manual mode temperature setpoint readback")
+	field(DESC, "Manual mode temperature setpoint rbv")
 	field(DTYP, "stream")
     field(INP, "@icefrdge.proto getManualTempSetRBV $(PORT)")
 	field(SCAN, "1 second")
@@ -109,6 +109,49 @@ record(ai, "$(P)MANUAL:TEMP:SP:RBV")
     field(SDIS, "$(P)DISABLE")
 	
 	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:TEMP1")
+{
+	field(DESC, "VTI temperature 1")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getCryoTemps($(P)) $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:TEMP1")
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:TEMP2")
+{
+	field(DESC, "VTI temperature 2")
+	field(EGU, "K")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:TEMP3")
+{
+	field(DESC, "VTI temperature 3")
+	field(EGU, "K")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:TEMP4")
+{
+	field(DESC, "VTI temperature 4")
+	field(EGU, "K")
+
+    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 

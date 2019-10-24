@@ -27,3 +27,8 @@ getManualTempSetRBV {
 	out "MANUAL TSET?";
     in "%f";
 }
+
+getCryoTemps {
+	out "CRYO-TEMPS?";
+	in "CRYO-TEMPS=%f,%(\$1VTI:TEMP2)f,%(\$1VTI:TEMP3)f,%(\$1VTI:TEMP4)f";
+}
