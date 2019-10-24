@@ -50,3 +50,12 @@ getLoopProportional {
 	out "CRYO-P\$1?";
 	in "CRYO-P\$1=%f";
 }
+
+setLoopIntegral {
+	out "CRYO-I=\$1,%f";
+}
+
+getLoopIntegral {
+	out "CRYO-I\$1?";
+	in "CRYO-I\$1=%f";
+}

@@ -58,6 +58,36 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):P")
 	info(archive, "VAL")
 }
 
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):I:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) integral setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopIntegral($(LOOP_NUM)) $(PORT)")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):I:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):I")
+{
+	field(DESC, "Loop $(LOOP_NUM) integral readback")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopIntegral($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "1 second")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):I")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
