@@ -169,3 +169,10 @@ record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):I:SP") {
 }
 
 alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):I:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):I")
+
+record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):D")
+
