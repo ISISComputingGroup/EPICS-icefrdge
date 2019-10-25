@@ -118,7 +118,7 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):D")
 	info(archive, "VAL")
 }
 
-record(ao, "$(P)VTI:LOOP$(LOOP_NUM):RAMP_RATE:SP")
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):RAMPRATE:SP")
 {
 	field(DESC, "Loop $(LOOP_NUM) ramp rate setpoint")
 	field(DTYP, "stream")
@@ -132,7 +132,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):RAMP_RATE:SP")
 	info(archive, "VAL")
 }
 
-record(ai, "$(P)VTI:LOOP$(LOOP_NUM):RAMP_RATE")
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):RAMPRATE")
 {
 	field(DESC, "Loop $(LOOP_NUM) ramp rate")
 	field(DTYP, "stream")
