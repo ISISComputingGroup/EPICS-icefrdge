@@ -126,7 +126,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):RAMPRATE:SP")
 	field(EGU, "K/min")
 
 	field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMP_RATE:SP")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE:SP")
     field(SDIS, "$(P)DISABLE")
 	
 	info(archive, "VAL")
@@ -141,7 +141,7 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):RAMPRATE")
 	field(EGU, "K/min")
 
 	field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMP_RATE")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE")
     field(SDIS, "$(P)DISABLE")
 	
 	info(INTEREST, "HIGH")
@@ -176,3 +176,8 @@ record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP") {
 
 alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):D")
 
+record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE")
