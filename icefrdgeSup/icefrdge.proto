@@ -77,3 +77,8 @@ getLoopRampRate {
 	out "CRYO-RAMP\$1?";
 	in "CRYO-RAMP\$1=%f";
 }
+
+getMCCernox {
+	out "LS-DIRECT-READ=RDGK? 4";
+	in "%f";
+}

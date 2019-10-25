@@ -155,6 +155,19 @@ record(ai, "$(P)VTI:TEMP4")
 	info(archive, "VAL")
 }
 
+record(ai, "$(P)LS:MC:CERNOX")
+{
+	field(DESC, "value of the Lakeshore MC Cernox")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCCernox $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+	
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
