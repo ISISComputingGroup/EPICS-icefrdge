@@ -119,9 +119,6 @@ record(ai, "$(P)VTI:TEMP1")
 	field(INP, "@icefrdge.proto getCryoTemps($(P)) $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
-
-	field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:VTI:TEMP1")
     field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -163,7 +160,7 @@ record(ai, "$(P)LS:MC:CERNOX")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
-	
+
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
