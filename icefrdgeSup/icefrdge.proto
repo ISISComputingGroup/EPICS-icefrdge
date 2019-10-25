@@ -59,3 +59,12 @@ getLoopIntegral {
 	out "CRYO-I\$1?";
 	in "CRYO-I\$1=%f";
 }
+
+setLoopDerivative {
+	out "CRYO-D=\$1,%f";
+}
+
+getLoopDerivative {
+	out "CRYO-D\$1?";
+	in "CRYO-D\$1=%f";
+}

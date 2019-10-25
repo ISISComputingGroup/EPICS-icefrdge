@@ -44,7 +44,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):P:SP")
 
 record(ai, "$(P)VTI:LOOP$(LOOP_NUM):P")
 {
-	field(DESC, "Loop $(LOOP_NUM) proportional readback")
+	field(DESC, "Loop $(LOOP_NUM) proportional value")
 	field(DTYP, "stream")
     field(INP, "@icefrdge.proto getLoopProportional($(LOOP_NUM)) $(PORT)")
     field(SCAN, "1 second")
@@ -74,7 +74,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):I:SP")
 
 record(ai, "$(P)VTI:LOOP$(LOOP_NUM):I")
 {
-	field(DESC, "Loop $(LOOP_NUM) integral readback")
+	field(DESC, "Loop $(LOOP_NUM) integral value")
 	field(DTYP, "stream")
     field(INP, "@icefrdge.proto getLoopIntegral($(LOOP_NUM)) $(PORT)")
     field(SCAN, "1 second")
@@ -86,6 +86,36 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):I")
 	
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
+}
+
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):D:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) derivative setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopDerivative($(LOOP_NUM)) $(PORT)")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):D")
+{
+	field(DESC, "Loop $(LOOP_NUM) derivative value")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopDerivative($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "1 second")
+	field(EGU, "K")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
 }
 
 #
