@@ -68,3 +68,12 @@ getLoopDerivative {
 	out "CRYO-D\$1?";
 	in "CRYO-D\$1=%f";
 }
+
+setLoopRampRate {
+	out "CRYO-RAMP=\$1,%f";
+}
+
+getLoopRampRate {
+	out "CRYO-RAMP\$1?";
+	in "CRYO-RAMP\$1=%f";
+}
