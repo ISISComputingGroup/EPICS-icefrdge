@@ -178,6 +178,19 @@ record(ai, "$(P)LS:MC:RUO")
 	info(archive, "VAL")
 }
 
+record(ai, "$(P)LS:STILL:TEMP")
+{
+	field(DESC, "value of Lakeshore still temperature")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCStillTemp $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #

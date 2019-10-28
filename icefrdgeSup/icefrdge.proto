@@ -87,3 +87,9 @@ getMCRuO {
 	out "LS-DIRECT-READ=RDGK? 6";
 	in "%f";
 }
+
+getMCStillTemp {
+	out "STILL?";
+	in "STILL=%f";
+}
+
