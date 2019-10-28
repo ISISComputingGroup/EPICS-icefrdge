@@ -82,3 +82,8 @@ getMCCernox {
 	out "LS-DIRECT-READ=RDGK? 4";
 	in "%f";
 }
+
+getMCRuO {
+	out "LS-DIRECT-READ=RDGK? 6";
+	in "%f";
+}
