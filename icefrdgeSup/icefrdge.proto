@@ -93,3 +93,24 @@ getMCStillTemp {
 	in "STILL=%f";
 }
 
+setMCTempSetIfZero {
+	out "LS-DIRECT-SET=SETP %f";
+
+	out "LS-DIRECT-SET=SCAN 6,1";
+
+	out "LS-DIRECT-SET=CMODE 4";
+}
+
+setMCTempSetIfNotZero {
+	out "LS-DIRECT-SET=SETP %f";
+
+	out "LS-DIRECT-SET=SCAN 6,0";
+
+	out "LS-DIRECT-SET=CMODE 1";
+}
+
+getMCTempSetpoint {
+	out "LS-DIRECT-READ=SETP?";
+	in "%f";
+}
+
