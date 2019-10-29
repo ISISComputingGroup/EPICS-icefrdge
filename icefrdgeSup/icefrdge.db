@@ -196,7 +196,10 @@ record(ao, "$(P)LS:MC:TEMP:SP")
 	field(DESC, "MC setpoint for Lakeshore")
 	field(OUT, "$(P)LS:MC:TEMP:SP:_IS_ZERO.A PP")
 	field(EGU, "K")
-	field(SDIS, "$(P)DISABLE")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:TEMP:SP")
+    field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -246,7 +249,9 @@ record(ai, "$(P)LS:MC:TEMP")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 
-	field(SDIS, "$(P)DISABLE")
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:TEMP")
+    field(SDIS, "$(P)DISABLE")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -269,3 +274,9 @@ record(ao, "$(P)SIM:MANUAL:TEMP:SP") {
 
 alias("$(P)SIM:MANUAL:TEMP:SP", "$(P)SIM:MANUAL:TEMP:SP:RBV")
 alias("$(P)SIM:MANUAL:TEMP:SP", "$(P)SIM:MANUAL:TEMP")
+
+record(ao, "$(P)SIM:LS:MC:TEMP:SP") {
+	
+}
+
+alias("$(P)SIM:LS:MC:TEMP:SP", "$(P)SIM:LS:MC:TEMP")
