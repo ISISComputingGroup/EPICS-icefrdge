@@ -198,8 +198,6 @@ record(ao, "$(P)LS:MC:TEMP:SP")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
 
-	field(TPRO, "1")
-
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
@@ -208,7 +206,6 @@ record(calc, "$(P)LS:MC:TEMP:SP:_IS_ZERO")
 {
 	field(CALC, "(A < 0.00001) ? 1 : 2")
 	field(FLNK, "$(P)LS:MC:TEMP:SP:_FAN")
-	field(TPRO, "1")
 }
 
 record(dfanout, "$(P)LS:MC:TEMP:SP:_FAN")
@@ -219,7 +216,6 @@ record(dfanout, "$(P)LS:MC:TEMP:SP:_FAN")
 	field(SELM, "Specified")
 	field(OUTA, "$(P)LS:MC:TEMP:SP:_IF_ZERO PP")
 	field(OUTB, "$(P)LS:MC:TEMP:SP:_IF_NOT_ZERO PP")
-	field(TPRO, "1")
 }
 
 record(ao, "$(P)LS:MC:TEMP:SP:_IF_ZERO")
@@ -228,7 +224,6 @@ record(ao, "$(P)LS:MC:TEMP:SP:_IF_ZERO")
 	field(OUT, "@icefrdge.proto setMCTempSetIfZero $(PORT)")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
-	field(TPRO, "1")
 
 	info(archive, "VAL")
 }
@@ -239,7 +234,6 @@ record(ao, "$(P)LS:MC:TEMP:SP:_IF_NOT_ZERO")
 	field(OUT, "@icefrdge.proto setMCTempSetIfNotZero $(PORT)")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
-	field(TPRO, "1")
 
 	info(archive, "VAL")
 }
