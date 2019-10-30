@@ -264,6 +264,8 @@ record(ao, "$(P)LS:MC:P:SP")
 	field(OUT, "@icefrdge.proto setMCProportional($(P)) $(PORT)")
 	field(EGU, "")
 
+    field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:P:SP")
     field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -304,6 +306,8 @@ record(ai, "$(P)LS:MC:P")
 	field(SCAN, "1 second")
 	field(EGU, "")
 
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:P")
     field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -314,8 +318,7 @@ record(ai, "$(P)LS:MC:I")
 {
 	field(DESC, "Lakeshore mixing chamber integral")
 	field(EGU, "")
-
-	field(SDIS, "$(P)DISABLE")
+    field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -325,8 +328,7 @@ record(ai, "$(P)LS:MC:D")
 {
 	field(DESC, "Lakeshore mixing chamber derivative")
 	field(EGU, "")
-
-	field(SDIS, "$(P)DISABLE")
+    field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -355,3 +357,9 @@ record(ao, "$(P)SIM:LS:MC:TEMP:SP") {
 }
 
 alias("$(P)SIM:LS:MC:TEMP:SP", "$(P)SIM:LS:MC:TEMP")
+
+record(ao, "$(P)SIM:LS:MC:P:SP") {
+	
+}
+
+alias("$(P)SIM:LS:MC:P:SP", "$(P)SIM:LS:MC:P")
