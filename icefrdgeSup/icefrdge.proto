@@ -2,7 +2,7 @@ Terminator = LF;
 
 getAutoTemperature {
 	out "AUTO TEMP?";
-	in "%f"
+	in "%f";
 }
 
 setAutoTempPoint {
@@ -112,5 +112,14 @@ setMCTempSetIfNotZero {
 getMCTempSetpoint {
 	out "LS-DIRECT-READ=SETP?";
 	in "%f";
+}
+
+setMCPIDs {
+	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I:SP)f,%(\$1LS:MC:D:SP)f";
+}
+
+getMCPIDs {
+	out "LS-DIRECT-READ=PID?";
+	in "%f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
 }
 

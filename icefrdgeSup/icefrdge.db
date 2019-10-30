@@ -257,6 +257,77 @@ record(ai, "$(P)LS:MC:TEMP")
 	info(archive, "VAL")
 }
 
+record(ao, "$(P)LS:MC:P:SP")
+{
+	field(DESC, "Lakeshore mc proportional setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMCPIDs($(P)) $(PORT)")
+	field(EGU, "")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)LS:MC:I:SP")
+{
+	field(DESC, "Lakeshore mc integral setpoint")
+	field(EGU, "")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)LS:MC:D:SP")
+{
+	field(DESC, "Lakeshore mc derivative setpoint")
+	field(EGU, "")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:P")
+{
+	field(DESC, "Lakeshore mixing chamber proportional")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCPIDs($(P)) $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:I")
+{
+	field(DESC, "Lakeshore mixing chamber integral")
+	field(EGU, "")
+
+	field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:D")
+{
+	field(DESC, "Lakeshore mixing chamber derivative")
+	field(EGU, "")
+
+	field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
