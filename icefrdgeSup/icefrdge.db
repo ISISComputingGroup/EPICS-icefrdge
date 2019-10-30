@@ -261,7 +261,7 @@ record(ao, "$(P)LS:MC:P:SP")
 {
 	field(DESC, "Lakeshore mc proportional setpoint")
 	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setMCPIDs($(P)) $(PORT)")
+	field(OUT, "@icefrdge.proto setMCProportional($(P)) $(PORT)")
 	field(EGU, "")
 
     field(SDIS, "$(P)DISABLE")
@@ -273,6 +273,8 @@ record(ao, "$(P)LS:MC:P:SP")
 record(ao, "$(P)LS:MC:I:SP")
 {
 	field(DESC, "Lakeshore mc integral setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMCIntegral($(P)) $(PORT)")
 	field(EGU, "")
 
     field(SDIS, "$(P)DISABLE")
@@ -284,6 +286,8 @@ record(ao, "$(P)LS:MC:I:SP")
 record(ao, "$(P)LS:MC:D:SP")
 {
 	field(DESC, "Lakeshore mc derivative setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMCDerivative($(P)) $(PORT)")
 	field(EGU, "")
 
     field(SDIS, "$(P)DISABLE")

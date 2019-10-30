@@ -114,8 +114,25 @@ getMCTempSetpoint {
 	in "%f";
 }
 
-setMCPIDs {
-	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I:SP)f,%(\$1LS:MC:D:SP)f";
+setMCProportional {
+	out "LS-DIRECT-READ=PID?";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+
+	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+}
+
+setMCIntegral {
+	out "LS-DIRECT-READ=PID?";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+
+	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%f,%(\$1LS:MC:D)f";
+}
+
+setMCDerivative {
+	out "LS-DIRECT-READ=PID?";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+
+	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%(\$1LS:MC:I)f,%f";
 }
 
 getMCPIDs {
