@@ -141,13 +141,13 @@ getMCPIDs {
 }
 
 setMCHeaterRange {
-	out "LS-DIRECT-SET=CSET 06,0,1,025,1,%d,+388.000";
+	out "LS-DIRECT-SET=CSET 06,0,1,025,1,%{0|1|2|3|4|5|6|7|8},+388.000";
 
-	out "LS-DIRECT-SET=HTRRNG %d";
+	out "LS-DIRECT-SET=HTRRNG %{0|1|2|3|4|5|6|7|8}";
 }
 
 getMcHeaterRange {
 	out "LS-DIRECT-READ=HTRRNG?";
-	in "%d";
+	in "%{0|1|2|3|4|5|6|7|8}";
 }
 
