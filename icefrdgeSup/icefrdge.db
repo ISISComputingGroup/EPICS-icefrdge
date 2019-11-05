@@ -336,10 +336,12 @@ record(ai, "$(P)LS:MC:D")
 
 record(mbbo, "$(P)LS:MC:HTR:RANGE:SP")
 {
-	field(DESC, "Lakeshore mixing chamber heater range setpoint")
+	field(DESC, "Lakeshore mc heater range setpoint")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setMCHeaterRange $(PORT)")
 
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:HTR:RANGE:SP")
 	field(SDIS, "$(P)DISABLE")
 
 	field(ZRVL, "0")
@@ -373,6 +375,8 @@ record(mbbi, "$(P)LS:MC:HTR:RANGE")
 	field(INP, "@icefrdge.proto getMCHeaterRange $(PORT)")
 	field(SCAN, "1 second")
 
+	field(SIML, "$(P)SIM")
+	field(SIOL, "$(P)SIM:LS:MC:HTR:RANGE")
 	field(SDIS, "$(P)DISABLE")
 
 	field(ZRVL, "0")
@@ -428,3 +432,9 @@ record(ao, "$(P)SIM:LS:MC:P:SP") {
 }
 
 alias("$(P)SIM:LS:MC:P:SP", "$(P)SIM:LS:MC:P")
+
+record(mbbo, "$(P)SIM:LS:MC:HTR:RANGE:SP") {
+	
+}
+
+alias("$(P)SIM:LS:MC:HTR:RANGE:SP", "$(P)SIM:LS:MC:HTR:RANGE")
