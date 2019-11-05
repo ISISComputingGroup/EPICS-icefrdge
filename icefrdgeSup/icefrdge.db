@@ -334,6 +334,71 @@ record(ai, "$(P)LS:MC:D")
 	info(archive, "VAL")
 }
 
+record(mbbo, "$(P)LS:MC:HTR:RANGE:SP")
+{
+	field(DESC, "Lakeshore mixing chamber heater range setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMCHeaterRange $(PORT)")
+
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+	field(THVL, "3")
+	field(FRVL, "4")
+	field(FVVL, "5")
+	field(SXVL, "6")
+	field(SVVL, "7")
+	field(EIVL, "8")
+
+	field(ZRST, "Off")
+	field(ONST, "31.6 uA")
+	field(TWST, "100 uA")
+	field(THST, "316 uA")
+	field(FRST, "1.00 mA")
+	field(FVST, "3.16 mA")
+	field(SXST, "10 mA")
+	field(SVST, "31.6 mA")
+	field(EIST, "100 mA")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(mbbi, "$(P)LS:MC:HTR:RANGE")
+{
+	field(DESC, "Lakeshore mixing chamber heater range")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCHeaterRange $(PORT)")
+	field(SCAN, "1 second")
+
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+	field(THVL, "3")
+	field(FRVL, "4")
+	field(FVVL, "5")
+	field(SXVL, "6")
+	field(SVVL, "7")
+	field(EIVL, "8")
+
+	field(ZRST, "Off")
+	field(ONST, "31.6 uA")
+	field(TWST, "100 uA")
+	field(THST, "316 uA")
+	field(FRST, "1.00 mA")
+	field(FVST, "3.16 mA")
+	field(SXST, "10 mA")
+	field(SVST, "31.6 mA")
+	field(EIST, "100 mA")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #

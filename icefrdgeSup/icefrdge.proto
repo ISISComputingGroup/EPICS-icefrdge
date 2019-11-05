@@ -140,3 +140,14 @@ getMCPIDs {
 	in "%f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
 }
 
+setMCHeaterRange {
+	out "LS-DIRECT-SET=CSET 06,0,1,025,1,%d,+388.000";
+
+	out "LS-DIRECT-SET=HTRRNG %d";
+}
+
+getMcHeaterRange {
+	out "LS-DIRECT-READ=HTRRNG?";
+	in "%d";
+}
+
