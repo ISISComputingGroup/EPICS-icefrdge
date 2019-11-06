@@ -403,6 +403,20 @@ record(mbbi, "$(P)LS:MC:HTR:RANGE")
 	info(archive, "VAL")
 }
 
+record(ai, "$(P)LS:MC:HTR:PERCENT")
+{
+	field(DESC, "percentage of power of Lakeshore MC heater")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCHeaterPercentage $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "%")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
