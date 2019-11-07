@@ -423,7 +423,7 @@ record(ai, "$(P)LS:STILL")
 	field(DTYP, "stream")
 	field(INP, "@icefrdge.proto getStillOutput $(PORT)")
 	field(SCAN, "1 second")
-	field(EGU, "")
+	field(EGU, "%")
 
 	field(SDIS, "$(P)DISABLE")
 
