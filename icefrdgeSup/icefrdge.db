@@ -405,11 +405,25 @@ record(mbbi, "$(P)LS:MC:HTR:RANGE")
 
 record(ai, "$(P)LS:MC:HTR:PERCENT")
 {
-	field(DESC, "percentage of power of Lakeshore MC heater")
+	field(DESC, "Lakeshore MC heater power percentage")
 	field(DTYP, "stream")
 	field(INP, "@icefrdge.proto getMCHeaterPercentage $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "%")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:STILL")
+{
+	field(DESC, "Lakeshore still output")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getStillOutput $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "")
 
 	field(SDIS, "$(P)DISABLE")
 

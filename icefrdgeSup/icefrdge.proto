@@ -153,6 +153,10 @@ getMcHeaterRange {
 
 getMcHeaterPercentage {
 	out "LS-DIRECT-READ=HTR?";
-	in "%f"
+	in "%f";
 }
 
+getStillOutput {
+	out "LS-DIRECT-READ=STILL?";
+	in "%f";
+}
