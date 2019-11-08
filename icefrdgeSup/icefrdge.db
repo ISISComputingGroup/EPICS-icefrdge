@@ -565,6 +565,53 @@ record(mbbi, "$(P)LS:VLTG:RANGE:CH6")
 	info(archive, "VAL")
 }
 
+record(ai, "$(P)MIMIC:PRESSURE1")
+{
+	field(DESC, "Mimic pressure 1")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMimicPressures($(P)) $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "Pa")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MIMIC:PRESSURE2")
+{
+	field(DESC, "Mimic pressure 2")
+	field(EGU, "Pa")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MIMIC:PRESSURE3")
+{
+	field(DESC, "Mimic pressure 3")
+	field(EGU, "Pa")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MIMIC:PRESSURE4")
+{
+	field(DESC, "Mimic pressure 4")
+	field(EGU, "Pa")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
