@@ -471,21 +471,21 @@ record(mbbo, $(P)LS:VLTG:RANGE:SP)
 	info(archive, "VAL")
 }
 
-record(ai, "$(P)LS:_VLTG:RANGE:AUX1")
+record(ai, "$(P)LS:_VLTG:RANGE:RESISTANCE:RANGE")
 {
-	field(DESC, "temporary data for setting vltg range")
+	field(DESC, "resistance range for setting vltg range")
 	field(EGU, "")
 }
 
-record(ai, "$(P)LS:_VLTG:RANGE:AUX2")
+record(ai, "$(P)LS:_VLTG:RANGE:AUTORANGE")
 {
-	field(DESC, "temporary data for setting vltg range")
+	field(DESC, "autorange mode for setting vltg range")
 	field(EGU, "")
 }
 
-record(ai, "$(P)LS:_VLTG:RANGE:AUX3")
+record(ai, "$(P)LS:_VLTG:RANGE:CSOFF")
 {
-	field(DESC, "temporary data for setting vltg range")
+	field(DESC, "excitation mode for setting vltg range")
 	field(EGU, "")
 }
 
