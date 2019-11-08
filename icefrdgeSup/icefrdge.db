@@ -431,6 +431,146 @@ record(ai, "$(P)LS:STILL")
 	info(archive, "VAL")
 }
 
+record(mbbo, $(P)LS:VLTG:RANGE:SP)
+{
+	field(DESC, "Lakeshore voltage range setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setExcVoltageRange($(P)) $(PORT)")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:VLTG:RANGE:SP")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
+	field(NIVL, "10")
+	field(TEVL, "11")
+	field(ELVL, "12")
+
+	field(ZRST, "2.00 uV")
+	field(ONST, "6.32 uV")
+	field(TWST, "20 uV")
+	field(THST, "63.2 uV")
+	field(FRST, "200 uV")
+	field(FVST, "632 uV")
+	field(SXST, "2.00 mV")
+	field(SVST, "6.32 mV")
+	field(EIST, "20.0 mV")
+	field(NIST, "63.2 mV")
+	field(TEST, "200 mV")
+	field(ELST, "632 mV")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:_VLTG:RANGE:AUX1")
+{
+	field(DESC, "temporary data for setting vltg range")
+	field(EGU, "")
+}
+
+record(ai, "$(P)LS:_VLTG:RANGE:AUX2")
+{
+	field(DESC, "temporary data for setting vltg range")
+	field(EGU, "")
+}
+
+record(ai, "$(P)LS:_VLTG:RANGE:AUX3")
+{
+	field(DESC, "temporary data for setting vltg range")
+	field(EGU, "")
+}
+
+record(mbbi, $(P)LS:VLTG:RANGE:CH5)
+{
+	field(DESC, "Lakeshore channel 5 vltg range")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getCh5ExcVoltageRange $(PORT)")
+	field(SCAN, "1 second")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:VLTG:RANGE:CH5")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
+	field(NIVL, "10")
+	field(TEVL, "11")
+	field(ELVL, "12")
+
+	field(ZRST, "2.00 uV")
+	field(ONST, "6.32 uV")
+	field(TWST, "20 uV")
+	field(THST, "63.2 uV")
+	field(FRST, "200 uV")
+	field(FVST, "632 uV")
+	field(SXST, "2.00 mV")
+	field(SVST, "6.32 mV")
+	field(EIST, "20.0 mV")
+	field(NIST, "63.2 mV")
+	field(TEST, "200 mV")
+	field(ELST, "632 mV")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(mbbi, $(P)LS:VLTG:RANGE:CH6)
+{
+	field(DESC, "Lakeshore channel 6 vltg range")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getCh6ExcVoltageRange $(PORT)")
+	field(SCAN, "1 second")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:VLTG:RANGE:CH6")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
+	field(NIVL, "10")
+	field(TEVL, "11")
+	field(ELVL, "12")
+
+	field(ZRST, "2.00 uV")
+	field(ONST, "6.32 uV")
+	field(TWST, "20 uV")
+	field(THST, "63.2 uV")
+	field(FRST, "200 uV")
+	field(FVST, "632 uV")
+	field(SXST, "2.00 mV")
+	field(SVST, "6.32 mV")
+	field(EIST, "20.0 mV")
+	field(NIST, "63.2 mV")
+	field(TEST, "200 mV")
+	field(ELST, "632 mV")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
@@ -466,3 +606,10 @@ record(mbbo, "$(P)SIM:LS:MC:HTR:RANGE:SP") {
 }
 
 alias("$(P)SIM:LS:MC:HTR:RANGE:SP", "$(P)SIM:LS:MC:HTR:RANGE")
+
+record(mbbo, "$(P)SIM:LS:VLTG:RANGE:SP") {
+	
+}
+
+alias("$(P)SIM:LS:VLTG:RANGE:SP", "$(P)SIM:LS:VLTG:RANGE:CH5")
+alias("$(P)SIM:LS:VLTG:RANGE:SP", "$(P)SIM:LS:VLTG:RANGE:CH6")
