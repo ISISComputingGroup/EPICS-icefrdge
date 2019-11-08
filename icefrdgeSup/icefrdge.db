@@ -201,7 +201,6 @@ record(ao, "$(P)LS:MC:TEMP:SP")
     field(SIOL, "$(P)SIM:LS:MC:TEMP:SP")
     field(SDIS, "$(P)DISABLE")
 
-    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -268,7 +267,6 @@ record(ao, "$(P)LS:MC:P:SP")
     field(SIOL, "$(P)SIM:LS:MC:P:SP")
     field(SDIS, "$(P)DISABLE")
 
-    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -281,7 +279,6 @@ record(ao, "$(P)LS:MC:I:SP")
 
     field(SDIS, "$(P)DISABLE")
 
-    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -294,7 +291,6 @@ record(ao, "$(P)LS:MC:D:SP")
 
     field(SDIS, "$(P)DISABLE")
 
-    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -364,7 +360,6 @@ record(mbbo, "$(P)LS:MC:HTR:RANGE:SP")
 	field(SVST, "31.6 mA")
 	field(EIST, "100 mA")
 
-    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -431,7 +426,7 @@ record(ai, "$(P)LS:STILL")
 	info(archive, "VAL")
 }
 
-record(mbbo, $(P)LS:VLTG:RANGE:SP)
+record(mbbo, "$(P)LS:VLTG:RANGE:SP")
 {
 	field(DESC, "Lakeshore voltage range setpoint")
 	field(DTYP, "stream")
@@ -467,7 +462,6 @@ record(mbbo, $(P)LS:VLTG:RANGE:SP)
 	field(TEST, "200 mV")
 	field(ELST, "632 mV")
 
-    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -489,7 +483,7 @@ record(ai, "$(P)LS:_VLTG:RANGE:CSOFF")
 	field(EGU, "")
 }
 
-record(mbbi, $(P)LS:VLTG:RANGE:CH5)
+record(mbbi, "$(P)LS:VLTG:RANGE:CH5")
 {
 	field(DESC, "Lakeshore channel 5 vltg range")
 	field(DTYP, "stream")
@@ -500,15 +494,15 @@ record(mbbi, $(P)LS:VLTG:RANGE:CH5)
     field(SIOL, "$(P)SIM:LS:VLTG:RANGE:CH5")
 	field(SDIS, "$(P)DISABLE")
 
-	field(ZRVL, "01")
-	field(ONVL, "02")
-	field(TWVL, "03")
-	field(THVL, "04")
-	field(FRVL, "05")
-	field(FVVL, "06")
-	field(SXVL, "07")
-	field(SVVL, "08")
-	field(EIVL, "09")
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
 	field(NIVL, "10")
 	field(TEVL, "11")
 	field(ELVL, "12")
@@ -530,7 +524,7 @@ record(mbbi, $(P)LS:VLTG:RANGE:CH5)
 	info(archive, "VAL")
 }
 
-record(mbbi, $(P)LS:VLTG:RANGE:CH6)
+record(mbbi, "$(P)LS:VLTG:RANGE:CH6")
 {
 	field(DESC, "Lakeshore channel 6 vltg range")
 	field(DTYP, "stream")
@@ -541,15 +535,15 @@ record(mbbi, $(P)LS:VLTG:RANGE:CH6)
     field(SIOL, "$(P)SIM:LS:VLTG:RANGE:CH6")
 	field(SDIS, "$(P)DISABLE")
 
-	field(ZRVL, "01")
-	field(ONVL, "02")
-	field(TWVL, "03")
-	field(THVL, "04")
-	field(FRVL, "05")
-	field(FVVL, "06")
-	field(SXVL, "07")
-	field(SVVL, "08")
-	field(EIVL, "09")
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
 	field(NIVL, "10")
 	field(TEVL, "11")
 	field(ELVL, "12")
