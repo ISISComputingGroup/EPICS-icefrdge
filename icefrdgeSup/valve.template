@@ -2,6 +2,8 @@ record(bi, "$(P)MIMIC:V$(VALVE_NUM)")
 {
 	field(DESC, "Mimic valve $(VALVE_NUM) status")
 
+	# The mimic valve pvs are updated using record redirection, so only one of the 10 PVs need a SCAN, INP and DTYP field.
+	# Therefore, the macro is needed so when the valve num is not one, these fields will be commented out.
 	$(IF_ONE) field(DTYP, "stream")
 	$(IF_ONE) field(INP, "@icefrdge.proto getMimicValves($(P)) $(PORT)")
 	$(IF_ONE) field(SCAN, "1 second")
@@ -22,10 +24,6 @@ record(bo, "$(P)MIMIC:V$(VALVE_NUM):SP")
 	field("ZNAM", "CLOSED")
 	field("ONAM", "OPEN")
 
-	field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:MIMIC:V$(VALVE_NUM):SP")
-	field(SDIS, "$(P)DISABLE")
-	
 	info(archive, "VAL")
 	info(INTEREST, "HIGH")
 }
