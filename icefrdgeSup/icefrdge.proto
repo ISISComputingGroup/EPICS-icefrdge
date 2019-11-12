@@ -196,3 +196,16 @@ getMimicValves {
 setMimicValve {
 	out "V\$1=%b";
 }
+
+getProportionalValves {
+	in "PV?";
+	out "PV1=%f,PV2=%(\$1MIMIC:PV2)f,NV=%(\$1MIMIC:NV)f,PV4=%(\$1MIMIC:PV4)f";
+}
+
+setProportionalValve {
+	out "PV\$1=%f";
+}
+
+setNeedleValve {
+	out "NV=%f";
+}
