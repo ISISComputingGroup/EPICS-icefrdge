@@ -1,0 +1,31 @@
+record(bi, "$(P)MIMIC:V$(VALVE_NUM)")
+{
+	field(DESC, "Mimic valve $(VALVE_NUM) status")
+
+	$(IF_ONE) field(DTYP, "stream")
+	$(IF_ONE) field(INP, "@icefrdge.proto getMimicValves($(P)) $(PORT)")
+	$(IF_ONE) field(SCAN, "1 second")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V$(VALVE_NUM):SP")
+{
+	field(DESC, "Mimic valve $(VALVE_NUM) setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve($(VALVE_NUM)) $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:MIMIC:V$(VALVE_NUM):SP")
+	field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}

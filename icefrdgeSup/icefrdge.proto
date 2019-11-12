@@ -193,42 +193,6 @@ getMimicValves {
 	in "V1=%b,V2=%(\$1MIMIC:V2)b,V3=%(\$1MIMIC:V3)b,V4=%(\$1MIMIC:V4)b,V5=%(\$1MIMIC:V5)b,V6=%(\$1MIMIC:V6)b,V7=%(\$1MIMIC:V7)b,V8=%(\$1MIMIC:V8)b,V9=%(\$1MIMIC:V9)b,V10=%(\$1MIMIC:V10)b";
 }
 
-setMimicValve1 {
-	out "V1=%b";
-}
-
-setMimicValve2 {
-	out "V2=%b";
-}
-
-setMimicValve3 {
-	out "V3=%b";
-}
-
-setMimicValve4 {
-	out "V4=%b";
-}
-
-setMimicValve5 {
-	out "V5=%b";
-}
-
-setMimicValve6 {
-	out "V6=%b";
-}
-
-setMimicValve7 {
-	out "V7=%b";
-}
-
-setMimicValve8 {
-	out "V8=%b";
-}
-
-setMimicValve9 {
-	out "V9=%b";
-}
-
-setMimicValve10 {
-	out "V10=%b";
+setMimicValve {
+	out "V\$1=%b";
 }
