@@ -436,15 +436,15 @@ record(mbbo, "$(P)LS:VLTG:RANGE:SP")
     field(SIOL, "$(P)SIM:LS:VLTG:RANGE:SP")
 	field(SDIS, "$(P)DISABLE")
 
-	field(ZRVL, "01")
-	field(ONVL, "02")
-	field(TWVL, "03")
-	field(THVL, "04")
-	field(FRVL, "05")
-	field(FVVL, "06")
-	field(SXVL, "07")
-	field(SVVL, "08")
-	field(EIVL, "09")
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
 	field(NIVL, "10")
 	field(TEVL, "11")
 	field(ELVL, "12")
@@ -494,15 +494,15 @@ record(mbbi, "$(P)LS:VLTG:RANGE:CH5")
     field(SIOL, "$(P)SIM:LS:VLTG:RANGE:CH5")
 	field(SDIS, "$(P)DISABLE")
 
-	field(ZRVL, "01")
-	field(ONVL, "02")
-	field(TWVL, "03")
-	field(THVL, "04")
-	field(FRVL, "05")
-	field(FVVL, "06")
-	field(SXVL, "07")
-	field(SVVL, "08")
-	field(EIVL, "09")
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
 	field(NIVL, "10")
 	field(TEVL, "11")
 	field(ELVL, "12")
@@ -535,15 +535,15 @@ record(mbbi, "$(P)LS:VLTG:RANGE:CH6")
     field(SIOL, "$(P)SIM:LS:VLTG:RANGE:CH6")
 	field(SDIS, "$(P)DISABLE")
 
-	field(ZRVL, "01")
-	field(ONVL, "02")
-	field(TWVL, "03")
-	field(THVL, "04")
-	field(FRVL, "05")
-	field(FVVL, "06")
-	field(SXVL, "07")
-	field(SVVL, "08")
-	field(EIVL, "09")
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
 	field(NIVL, "10")
 	field(TEVL, "11")
 	field(ELVL, "12")
@@ -610,6 +610,249 @@ record(ai, "$(P)MIMIC:PRESSURE4")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
+}
+
+record(bi, "$(P)MIMIC:V1")
+{
+	field(DESC, "Mimic valve 1 status")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMimicValves($(P)) $(PORT)")
+	field(SCAN, "1 second")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V2")
+{
+	field(DESC, "Mimic valve 2 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V3")
+{
+	field(DESC, "Mimic valve 3 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V4")
+{
+	field(DESC, "Mimic valve 4 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V5")
+{
+	field(DESC, "Mimic valve 5 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V6")
+{
+	field(DESC, "Mimic valve 6 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V7")
+{
+	field(DESC, "Mimic valve 7 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V8")
+{
+	field(DESC, "Mimic valve 8 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V9")
+{
+	field(DESC, "Mimic valve 9 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bi, "$(P)MIMIC:V10")
+{
+	field(DESC, "Mimic valve 10 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V1:SP")
+{
+	field(DESC, "Mimic valve 1 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve1 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V2:SP")
+{
+	field(DESC, "Mimic valve 2 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve2 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V3:SP")
+{
+	field(DESC, "Mimic valve 3 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve3 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V4:SP")
+{
+	field(DESC, "Mimic valve 4 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve4 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V5:SP")
+{
+	field(DESC, "Mimic valve 5 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve5 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V6:SP")
+{
+	field(DESC, "Mimic valve 6 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve6 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V7:SP")
+{
+	field(DESC, "Mimic valve 7 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve7 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V8:SP")
+{
+	field(DESC, "Mimic valve 8 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve8 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V9:SP")
+{
+	field(DESC, "Mimic valve 9 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve9 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:V10:SP")
+{
+	field(DESC, "Mimic valve 10 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMimicValve10 $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+	
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
 }
 
 #
