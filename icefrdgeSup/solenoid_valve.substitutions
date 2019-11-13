@@ -1,0 +1,7 @@
+file solenoid_valve.template { 
+  pattern 
+    {P, PORT, VALVE_NUM}
+    
+    {"\$(P)", "\$(PORT)", "1"}
+    {"\$(P)", "\$(PORT)", "2"}
+}
