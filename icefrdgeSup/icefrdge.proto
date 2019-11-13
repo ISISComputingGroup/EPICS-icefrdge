@@ -213,3 +213,8 @@ setProportionalValve {
 setNeedleValve {
 	out "NV=%f";
 }
+
+get1KStage {
+	out "CRYO?";
+	in "CRYO=%f";
+}

@@ -639,6 +639,20 @@ record(ao, "$(P)MIMIC:NV:SP")
 	info(archive, "VAL")
 }
 
+record(ai, "$(P)MIMIC:1K")
+{
+	field(DESC, "Mimic 1K stage value")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto get1KStage $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
