@@ -190,11 +190,15 @@ getMimicPressures {
 
 getMimicValves {
 	out "VALVES?";
-	in "V1=%b,V2=%(\$1MIMIC:V2)b,V3=%(\$1MIMIC:V3)b,V4=%(\$1MIMIC:V4)b,V5=%(\$1MIMIC:V5)b,V6=%(\$1MIMIC:V6)b,V7=%(\$1MIMIC:V7)b,V8=%(\$1MIMIC:V8)b,V9=%(\$1MIMIC:V9)b,V10=%(\$1MIMIC:V10)b";
+	in "SV1=%(\$1MIMIC:SV1)b,SV2=%(\$1MIMIC:SV2)b,V1=%b,V2=%(\$1MIMIC:V2)b,V3=%(\$1MIMIC:V3)b,V4=%(\$1MIMIC:V4)b,V5=%(\$1MIMIC:V5)b,V6=%(\$1MIMIC:V6)b,V7=%(\$1MIMIC:V7)b,V8=%(\$1MIMIC:V8)b,V9=%(\$1MIMIC:V9)b,V10=%(\$1MIMIC:V10)b";
 }
 
 setMimicValve {
 	out "V\$1=%b";
+}
+
+setSolenoidValve {
+	out "SV\$1=%b";
 }
 
 getProportionalValves {

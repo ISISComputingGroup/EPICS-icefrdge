@@ -639,6 +639,57 @@ record(ao, "$(P)MIMIC:NV:SP")
 	info(archive, "VAL")
 }
 
+record(bi, "$(P)MIMIC:SV1")
+{
+	field(DESC, "Solenoid valve 1 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)MIMIC:SV2")
+{
+	field(DESC, "Solenoid valve 2 status")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)MIMIC:SV1:SP")
+{
+	field(DESC, "Solenoid valve 1 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setSolenoidValve(1) $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+	
+}
+
+record(bo, "$(P)MIMIC:SV2:SP")
+{
+	field(DESC, "Solenoid valve 2 setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setSolenoidValve(2) $(PORT)")
+
+	field("ZNAM", "CLOSED")
+	field("ONAM", "OPEN")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+	
+}
+
+
 #
 # Simulation records
 #
