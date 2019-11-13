@@ -612,85 +612,13 @@ record(ai, "$(P)MIMIC:PRESSURE4")
 	info(archive, "VAL")
 }
 
-record(ai, "$(P)MIMIC:PV1")
-{
-	field(DESC, "Mimic proportional valve 1")
-	field(DTYP, "stream")
-	field(INP, "@icefrdge.proto getProportionalValves($(P)) $(PORT)")
-	field(SCAN, "1 second")
-	field(EGU, "")
-
-	field(SDIS, "$(P)DISABLE")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-}
-
-record(ai, "$(P)MIMIC:PV2")
-{
-	field(DESC, "Mimic proportional valve 2")
-	field(EGU, "")
-
-	field(SDIS, "$(P)DISABLE")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-}
-
-record(ai, "$(P)MIMIC:PV4")
-{
-	field(DESC, "Mimic proportional valve 4")
-	field(EGU, "")
-
-	field(SDIS, "$(P)DISABLE")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-}
-
 record(ai, "$(P)MIMIC:NV")
 {
 	field(DESC, "Mimic needle valve")
 	field(EGU, "")
 
-	field(SDIS, "$(P)DISABLE")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-}
-
-record(ao, "$(P)MIMIC:PV1:SP")
-{
-	field(DESC, "Mimic proportional valve 1 setpoint")
-	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setProportionalValve(1) $(PORT)")
-	field(EGU, "")
-
-	field(SDIS, "$(P)DISABLE")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-}
-
-record(ao, "$(P)MIMIC:PV2:SP")
-{
-	field(DESC, "Mimic proportional valve 2 setpoint")
-	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setProportionalValve(2) $(PORT)")
-	field(EGU, "")
-
-	field(SDIS, "$(P)DISABLE")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-}
-
-record(ao, "$(P)MIMIC:PV4:SP")
-{
-	field(DESC, "Mimic proportional valve 4 setpoint")
-	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setProportionalValve(4) $(PORT)")
-	field(EGU, "")
+	# The needle and proportional valve pvs are updated using record redirection, so only proportional 
+	# valve 1 needs a SCAN, INP and DTYP field.
 
 	field(SDIS, "$(P)DISABLE")
 

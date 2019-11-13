@@ -6,6 +6,7 @@ include $(TOP)/configure/CONFIG
 DB += icefrdge.db
 DB += loop.db
 DB += valve.db
+DB += proportional_valve.db
 DATA += icefrdge.proto
 
 

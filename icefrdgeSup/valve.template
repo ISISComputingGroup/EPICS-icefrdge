@@ -11,8 +11,8 @@ record(bi, "$(P)MIMIC:V$(VALVE_NUM)")
 	field("ZNAM", "CLOSED")
 	field("ONAM", "OPEN")
 
-	info(archive, "VAL")
 	info(INTEREST, "HIGH")
+	info(archive, "VAL")
 }
 
 record(bo, "$(P)MIMIC:V$(VALVE_NUM):SP")
@@ -24,6 +24,7 @@ record(bo, "$(P)MIMIC:V$(VALVE_NUM):SP")
 	field("ZNAM", "CLOSED")
 	field("ONAM", "OPEN")
 
-	info(archive, "VAL")
 	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+	
 }
