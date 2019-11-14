@@ -1,33 +1,5 @@
 Terminator = LF;
 
-getAutoTemperature {
-	out "AUTO TEMP?";
-	in "%f";
-}
-
-setAutoTempPoint {
-	out "AUTO TSET=%f";
-}
-
-getAutoTempSetRBV {
-	out "AUTO TSET?";
-    in "%f";
-}
-
-getManualTemperature {
-	out "MANUAL TEMP?";
-	in "%f";
-}
-
-setManualTempPoint {
-	out "MANUAL TSET=%f";
-}
-
-getManualTempSetRBV {
-	out "MANUAL TSET?";
-    in "%f";
-}
-
 getCryoTemps {
 	out "CRYO-TEMPS?";
 	in "CRYO-TEMPS=%f,%(\$1VTI:TEMP2)f,%(\$1VTI:TEMP3)f,%(\$1VTI:TEMP4)f";
