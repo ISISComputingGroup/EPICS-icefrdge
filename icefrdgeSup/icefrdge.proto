@@ -93,7 +93,7 @@ getMCStillTemp {
 	in "STILL=%f";
 }
 
-setMCTempSetIfZero {
+setLakeshoreMCTempSetIfZero {
 	out "LS-DIRECT-SET=SETP %f";
 
 	out "LS-DIRECT-SET=SCAN 6,1";
@@ -101,7 +101,7 @@ setMCTempSetIfZero {
 	out "LS-DIRECT-SET=CMODE 4";
 }
 
-setMCTempSetIfNotZero {
+setLakeshoreMCTempSetIfNotZero {
 	out "LS-DIRECT-SET=SETP %f";
 
 	out "LS-DIRECT-SET=SCAN 6,0";
@@ -109,7 +109,7 @@ setMCTempSetIfNotZero {
 	out "LS-DIRECT-SET=CMODE 1";
 }
 
-getMCTempSetpoint {
+getLakeshoreMCTempSetpoint {
 	out "LS-DIRECT-READ=SETP?";
 	in "%f";
 }
@@ -217,4 +217,14 @@ setNeedleValve {
 get1KStage {
 	out "CRYO?";
 	in "CRYO=%f";
+}
+
+getMcTemp {
+	out "MC?";
+	in "MC=%f";
+}
+
+getMCResistance {
+	out "MC-R?";
+	in "MC-R=%f";
 }

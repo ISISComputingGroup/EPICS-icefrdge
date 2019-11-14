@@ -193,7 +193,7 @@ record(ai, "$(P)LS:STILL:TEMP")
 
 record(ao, "$(P)LS:MC:TEMP:SP")
 {
-	field(DESC, "MC setpoint for Lakeshore")
+	field(DESC, "Lakshore MC temperature setpoint")
 	field(OUT, "$(P)LS:MC:TEMP:SP:_IS_ZERO.A PP")
 	field(EGU, "K")
 
@@ -223,7 +223,7 @@ record(dfanout, "$(P)LS:MC:TEMP:SP:_FAN")
 record(ao, "$(P)LS:MC:TEMP:SP:_IF_ZERO")
 {
 	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setMCTempSetIfZero $(PORT)")
+	field(OUT, "@icefrdge.proto setLakeshoreMCTempSetIfZero $(PORT)")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
 
@@ -233,7 +233,7 @@ record(ao, "$(P)LS:MC:TEMP:SP:_IF_ZERO")
 record(ao, "$(P)LS:MC:TEMP:SP:_IF_NOT_ZERO")
 {
 	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setMCTempSetIfNotZero $(PORT)")
+	field(OUT, "@icefrdge.proto setLakeshoreMCTempSetIfNotZero $(PORT)")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
 
@@ -244,7 +244,7 @@ record(ai, "$(P)LS:MC:TEMP")
 {
 	field(DESC, "mixing chamber temp setpoint indicator")
 	field(DTYP, "stream")
-	field(INP, "@icefrdge.proto getMCTempSetpoint $(PORT)")
+	field(INP, "@icefrdge.proto getLakeshoreMCTempSetpoint $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 
@@ -641,13 +641,55 @@ record(ao, "$(P)MIMIC:NV:SP")
 
 record(ai, "$(P)MIMIC:1K")
 {
-	field(DESC, "Mimic 1K stage value")
+	field(DESC, "Mimic 1K stage temperature")
 	field(DTYP, "stream")
 	field(INP, "@icefrdge.proto get1KStage $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
 
 	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MC:TEMP")
+{
+	field(DESC, "Mixing Chamber temperature")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCTemp $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(FLNK, "$(P)MC:USER")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MC:RESISTANCE")
+{
+	field(DESC, "Mixing Chamber resistance")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCResistance $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "miliOhm")
+	field(FLNK, "$(P)MC:USER")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(calc, "$(P)MC:USER")
+{
+	field(DESC, "Mixing chamber readback for user")
+	field(INPA, "$(P)MC:TEMP")
+	field(INPB, "$(P)MC:RESISTANCE")
+	field(CALC, "(A < 0.051?B:A)")
+	field(EGU, "K")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
