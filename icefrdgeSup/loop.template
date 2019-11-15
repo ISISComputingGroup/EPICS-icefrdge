@@ -35,6 +35,10 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):P:SP")
     field(OUT, "@icefrdge.proto setLoopProportional($(LOOP_NUM)) $(PORT)")
 	field(EGU, "")
 
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)VTI:LOOP$(LOOP_NUM):P")
+
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):P:SP")
     field(SDIS, "$(P)DISABLE")
@@ -65,6 +69,10 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):I:SP")
     field(OUT, "@icefrdge.proto setLoopIntegral($(LOOP_NUM)) $(PORT)")
 	field(EGU, "")
 
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)VTI:LOOP$(LOOP_NUM):I")
+
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):I:SP")
     field(SDIS, "$(P)DISABLE")
@@ -94,6 +102,10 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):D:SP")
 	field(DTYP, "stream")
     field(OUT, "@icefrdge.proto setLoopDerivative($(LOOP_NUM)) $(PORT)")
 	field(EGU, "")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)VTI:LOOP$(LOOP_NUM):D")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP")

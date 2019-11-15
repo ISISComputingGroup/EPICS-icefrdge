@@ -15,6 +15,10 @@ record(bo, "$(P)MIMIC:SV$(VALVE_NUM):SP")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setSolenoidValve($(VALVE_NUM)) $(PORT)")
 
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)MIMIC:V1")
+
 	field("ZNAM", "CLOSED")
 	field("ONAM", "OPEN")
 

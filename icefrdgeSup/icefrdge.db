@@ -171,6 +171,10 @@ record(ao, "$(P)LS:MC:P:SP")
 	field(OUT, "@icefrdge.proto setMCProportional($(P)) $(PORT)")
 	field(EGU, "")
 
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:MC:P")
+
     field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:LS:MC:P:SP")
     field(SDIS, "$(P)DISABLE")
@@ -185,6 +189,10 @@ record(ao, "$(P)LS:MC:I:SP")
 	field(OUT, "@icefrdge.proto setMCIntegral($(P)) $(PORT)")
 	field(EGU, "")
 
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:MC:I")
+
     field(SDIS, "$(P)DISABLE")
 
 	info(archive, "VAL")
@@ -196,6 +204,10 @@ record(ao, "$(P)LS:MC:D:SP")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setMCDerivative($(P)) $(PORT)")
 	field(EGU, "")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:MC:D")
 
     field(SDIS, "$(P)DISABLE")
 
@@ -243,6 +255,10 @@ record(mbbo, "$(P)LS:MC:HTR:RANGE:SP")
 	field(DESC, "Lakeshore mc heater range setpoint")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setMCHeaterRange $(PORT)")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:MC:HTR:RANGE")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:LS:MC:HTR:RANGE:SP")
@@ -343,6 +359,11 @@ record(mbbo, "$(P)LS:VLTG:RANGE:SP")
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:LS:VLTG:RANGE:SP")
 	field(SDIS, "$(P)DISABLE")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:VLTG:RANGE:CH5")
+	field(FLNK, "$(P)LS:VLTG:RANGE:CH6")
 
 	field(ZRVL, "1")
 	field(ONVL, "2")
@@ -540,6 +561,10 @@ record(ao, "$(P)MIMIC:NV:SP")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setNeedleValve $(PORT)")
 	field(EGU, "")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)MIMIC:PV1")
 
 	field(SDIS, "$(P)DISABLE")
 

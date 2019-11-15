@@ -22,6 +22,10 @@ record(ao, "$(P)MIMIC:PV$(VALVE_NUM):SP")
 	field(OUT, "@icefrdge.proto setProportionalValve($(VALVE_NUM)) $(PORT)")
 	field(EGU, "")
 
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)MIMIC:PV1")
+
 	field(SDIS, "$(P)DISABLE")
 
 	info(INTEREST, "HIGH")
