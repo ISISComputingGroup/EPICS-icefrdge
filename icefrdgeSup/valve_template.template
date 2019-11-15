@@ -6,7 +6,7 @@ record(bi, "$(P)MIMIC:V$(VALVE_NUM)")
 	# Therefore, the macro is needed so when the valve num is not one, these fields will be commented out.
 	$(IF_ONE) field(DTYP, "stream")
 	$(IF_ONE) field(INP, "@icefrdge.proto getMimicValves($(P)) $(PORT)")
-	$(IF_ONE) field(SCAN, "1 second")
+	$(IF_ONE) field(SCAN, "5 second")
 
 	field("ZNAM", "CLOSED")
 	field("ONAM", "OPEN")
