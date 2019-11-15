@@ -8,6 +8,7 @@ DB += loop.db
 DB += valve.db
 DB += proportional_valve.db
 DB += solenoid_valve.db
+DB += icefrdge_error_setter.db
 DATA += icefrdge.proto
 
 

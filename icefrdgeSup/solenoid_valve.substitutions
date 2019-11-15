@@ -1,7 +1,14 @@
-file solenoid_valve.template { 
+file solenoid_valve_template.template { 
   pattern 
     {P, PORT, VALVE_NUM}
     
     {"\$(P)", "\$(PORT)", "1"}
     {"\$(P)", "\$(PORT)", "2"}
+}
+
+file $(UTILITIES)/db/error_setter.template {
+    pattern {P, STREAM_PV, PV_NAME}
+
+    {"\$(P)", "MIMIC:V1", "MIMIC:SV1"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:SV2"}
 }

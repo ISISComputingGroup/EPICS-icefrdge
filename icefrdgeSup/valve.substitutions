@@ -1,4 +1,4 @@
-file valve.template { 
+file valve_template.template { 
   pattern 
     {P, PORT, VALVE_NUM, IF_ONE}
     
@@ -12,4 +12,18 @@ file valve.template {
     {"\$(P)", "\$(PORT)", "8", "#"}
     {"\$(P)", "\$(PORT)", "9", "#"}
     {"\$(P)", "\$(PORT)", "10", "#"}
+}
+
+file $(UTILITIES)/db/error_setter.template {
+    pattern {P, STREAM_PV, PV_NAME}
+
+    {"\$(P)", "MIMIC:V1", "MIMIC:V2"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:V3"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:V4"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:V5"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:V6"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:V7"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:V8"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:V9"}
+    {"\$(P)", "MIMIC:V1", "MIMIC:V10"}
 }

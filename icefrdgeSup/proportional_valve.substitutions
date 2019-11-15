@@ -1,8 +1,16 @@
-file proportional_valve.template { 
+file proportional_valve_template.template { 
   pattern 
     {P, PORT, VALVE_NUM, IF_ONE}
     
     {"\$(P)", "\$(PORT)", "1", ""}
     {"\$(P)", "\$(PORT)", "2", "#"}
     {"\$(P)", "\$(PORT)", "4", "#"}
+}
+
+file $(UTILITIES)/db/error_setter.template {
+    pattern {P, STREAM_PV, PV_NAME}
+
+    {"\$(P)", "MIMIC:PV1", "MIMIC:PV2"}
+    {"\$(P)", "MIMIC:PV1", "MIMIC:PV4"}
+    {"\$(P)", "MIMIC:PV1", "MIMIC:NV"}
 }

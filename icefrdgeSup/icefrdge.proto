@@ -2,7 +2,7 @@ Terminator = LF;
 
 getCryoTemps {
 	out "CRYO-TEMPS?";
-	in "CRYO-TEMPS=%f,%(\$1VTI:TEMP2)f,%(\$1VTI:TEMP3)f,%(\$1VTI:TEMP4)f";
+	in "CRYO-TEMPS=%f,%(\$1VTI:TEMP2:RAW.A)f,%(\$1VTI:TEMP3:RAW.A)f,%(\$1VTI:TEMP4:RAW.A)f";
 }
 
 setLoopTempPoint {
@@ -88,28 +88,28 @@ getLakeshoreMCTempSetpoint {
 
 setMCProportional {
 	out "LS-DIRECT-READ=PID?";
-	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
-	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 }
 
 setMCIntegral {
 	out "LS-DIRECT-READ=PID?";
-	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
-	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%f,%(\$1LS:MC:D)f";
+	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%f,%(\$1LS:MC:D:RAW.A)f";
 }
 
 setMCDerivative {
 	out "LS-DIRECT-READ=PID?";
-	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
-	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%(\$1LS:MC:I)f,%f";
+	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%f";
 }
 
 getMCPIDs {
 	out "LS-DIRECT-READ=PID?";
-	in "%f,%(\$1LS:MC:I)f,%(\$1LS:MC:D)f";
+	in "%f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 }
 
 setMCHeaterRange {
@@ -157,12 +157,12 @@ getCh6ExcVoltageRange {
 
 getMimicPressures {
 	out "P?";
-	in "P1=%f,P2=%(\$1MIMIC:PRESSURE2)f,P3=%(\$1MIMIC:PRESSURE3)f,P4=%(\$1MIMIC:PRESSURE4)f";
+	in "P1=%f,P2=%(\$1MIMIC:PRESSURE2:RAW.A)f,P3=%(\$1MIMIC:PRESSURE3:RAW.A)f,P4=%(\$1MIMIC:PRESSURE4:RAW.A)f";
 }
 
 getMimicValves {
 	out "VALVES?";
-	in "SV1=%(\$1MIMIC:SV1)b,SV2=%(\$1MIMIC:SV2)b,V1=%b,V2=%(\$1MIMIC:V2)b,V3=%(\$1MIMIC:V3)b,V4=%(\$1MIMIC:V4)b,V5=%(\$1MIMIC:V5)b,V6=%(\$1MIMIC:V6)b,V7=%(\$1MIMIC:V7)b,V8=%(\$1MIMIC:V8)b,V9=%(\$1MIMIC:V9)b,V10=%(\$1MIMIC:V10)b";
+	in "SV1=%(\$1MIMIC:SV1:RAW.A)b,SV2=%(\$1MIMIC:SV2:RAW.A)b,V1=%b,V2=%(\$1MIMIC:V2:RAW.A)b,V3=%(\$1MIMIC:V3:RAW.A)b,V4=%(\$1MIMIC:V4:RAW.A)b,V5=%(\$1MIMIC:V5:RAW.A)b,V6=%(\$1MIMIC:V6:RAW.A)b,V7=%(\$1MIMIC:V7:RAW.A)b,V8=%(\$1MIMIC:V8:RAW.A)b,V9=%(\$1MIMIC:V9:RAW.A)b,V10=%(\$1MIMIC:V10:RAW.A)b";
 }
 
 setMimicValve {
@@ -175,7 +175,7 @@ setSolenoidValve {
 
 getProportionalValves {
 	out "PV?";
-	in "PV1=%f,PV2=%(\$1MIMIC:PV2)f,NV=%(\$1MIMIC:NV)f,PV4=%(\$1MIMIC:PV4)f";
+	in "PV1=%f,PV2=%(\$1MIMIC:PV2:RAW.A)f,NV=%(\$1MIMIC:NV:RAW.A)f,PV4=%(\$1MIMIC:PV4:RAW.A)f";
 }
 
 setProportionalValve {
