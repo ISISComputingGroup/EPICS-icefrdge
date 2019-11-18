@@ -200,3 +200,15 @@ getMCResistance {
 	out "MC-R?";
 	in "MC-R=%f";
 }
+
+setStart {
+	out "START";
+}
+
+setSkip {
+	out "SKIP";
+}
+
+setStop {
+	out "STOP";
+}

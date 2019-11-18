@@ -628,6 +628,78 @@ record(calc, "$(P)MC:USER")
 	info(archive, "VAL")
 }
 
+record(mbbo, "$(P)MIMIC:MODE:SP")
+{
+	field(DESC, "Mimic panel mode setpoint")
+
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+
+	field(ZRST, "MANUAL")
+	field(ONST, "SEMI AUTOMATIC")
+	field(TWST, "AUTOMATIC")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(calcout, "$(P)MIMIC:MODE:SP:_CALC") 
+{
+	field(INPA, "$(P)MIMIC:MODE:SP CP MS")
+	field(CALC, "A=1?0:1")
+	field(OUT, "$(P)MIMIC:MODE:SP:_FAN PP")
+}
+
+record(dfanout, "$(P)MIMIC:MODE:SP:_FAN") 
+{
+	field(OUTA, "$(P)MIMIC:START:SP.DISP")
+    field(OUTB, "$(P)MIMIC:STOP:SP.DISP")
+    field(OUTC, "$(P)MIMIC:SKIP:SP.DISP")
+}
+
+record(bo, "$(P)MIMIC:START:SP") 
+{
+	field(DESC, "Mimic panel Start setpoint")
+	
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setStart $(PORT)")
+
+	field("ZNAM", "DISABLED")
+	field("ONAM", "ENABLED")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)MIMIC:SKIP:SP") 
+{
+	field(DESC, "Mimic panel Skip setpoint")
+	
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setSkip $(PORT)")
+
+	field("ZNAM", "DISABLED")
+	field("ONAM", "ENABLED")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)MIMIC:STOP:SP") 
+{
+	field(DESC, "Mimic panel Stop setpoint")
+	
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setStop $(PORT)")
+
+	field("ZNAM", "DISABLED")
+	field("ONAM", "ENABLED")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
