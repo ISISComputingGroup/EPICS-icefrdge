@@ -11,6 +11,4 @@ file $(UTILITIES)/db/error_setter.template {
     {"\$(P)", "MIMIC:PRESSURE1", "MIMIC:PRESSURE2"}
     {"\$(P)", "MIMIC:PRESSURE1", "MIMIC:PRESSURE3"}
     {"\$(P)", "MIMIC:PRESSURE1", "MIMIC:PRESSURE4"}
-
-    {"\$(P)", "MC:TEMP", "MC:USER"}
 }
