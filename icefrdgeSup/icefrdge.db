@@ -706,20 +706,6 @@ record(bo, "$(P)MIMIC:STOP:SP")
 # Simulation records
 #
 
-record(ao, "$(P)SIM:AUTO:TEMP:SP") {
-	
-}
-
-alias("$(P)SIM:AUTO:TEMP:SP", "$(P)SIM:AUTO:TEMP:SP:RBV")
-alias("$(P)SIM:AUTO:TEMP:SP", "$(P)SIM:AUTO:TEMP")
-
-record(ao, "$(P)SIM:MANUAL:TEMP:SP") {
-	
-}
-
-alias("$(P)SIM:MANUAL:TEMP:SP", "$(P)SIM:MANUAL:TEMP:SP:RBV")
-alias("$(P)SIM:MANUAL:TEMP:SP", "$(P)SIM:MANUAL:TEMP")
-
 record(ao, "$(P)SIM:LS:MC:TEMP:SP") {
 	
 }
