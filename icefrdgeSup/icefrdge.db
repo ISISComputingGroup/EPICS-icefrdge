@@ -663,7 +663,7 @@ record(bo, "$(P)MIMIC:START:SP")
 	field(DESC, "Mimic panel Start setpoint")
 	
 	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setStart $(PORT)")
+	field(OUT, "@icefrdge.proto start $(PORT)")
 
 	field("ZNAM", "DISABLED")
 	field("ONAM", "ENABLED")
@@ -675,12 +675,11 @@ record(bo, "$(P)MIMIC:START:SP")
 record(bo, "$(P)MIMIC:SKIP:SP") 
 {
 	field(DESC, "Mimic panel Skip setpoint")
-	
 	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setSkip $(PORT)")
+	field(OUT, "@icefrdge.proto skip $(PORT)")
 
-	field("ZNAM", "DISABLED")
-	field("ONAM", "ENABLED")
+	field(ZNAM, "SKIP0")
+	field(ONAM, "SKIP1")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -689,12 +688,11 @@ record(bo, "$(P)MIMIC:SKIP:SP")
 record(bo, "$(P)MIMIC:STOP:SP") 
 {
 	field(DESC, "Mimic panel Stop setpoint")
-	
 	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setStop $(PORT)")
+	field(OUT, "@icefrdge.proto stop $(PORT)")
 
-	field("ZNAM", "DISABLED")
-	field("ONAM", "ENABLED")
+	field(ZNAM, "STOP0")
+	field(ONAM, "STOP1")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")

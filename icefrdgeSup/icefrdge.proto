@@ -201,14 +201,14 @@ getMCResistance {
 	in "MC-R=%f";
 }
 
-setStart {
-	out "START";
+start {
+	out "s";
 }
 
-setSkip {
+skip {
 	out "SKIP";
 }
 
-setStop {
+stop {
 	out "STOP";
 }
