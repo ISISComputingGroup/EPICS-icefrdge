@@ -660,20 +660,6 @@ record(dfanout, "$(P)MIMIC:MODE:SP:_FAN")
     field(OUTC, "$(P)MIMIC:SKIP:SP.DISP")
 }
 
-record(bo, "$(P)MIMIC:START:SP") 
-{
-	field(DESC, "Mimic panel Start setpoint")
-	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto start $(PORT)")
-	field(SDIS, "$(P)DISABLE")
-
-	field(ZNAM, "DISABLED")
-	field(ONAM, "ENABLED")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
-}
-
 record(bo, "$(P)MIMIC:SKIP:SP") 
 {
 	field(DESC, "Mimic panel Skip setpoint")
@@ -699,6 +685,140 @@ record(bo, "$(P)MIMIC:STOP:SP")
 	field(ONAM, "STOP1")
 
 	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)MIMIC:START:SP") 
+{
+	field(DESC, "Mimic panel Start setpoint")
+	field(SDIS, "$(P)DISABLE")
+
+	field(FLNK, "$(P)MIMIC:SEQUENCE:_CALC")
+
+	field(ZNAM, "DISABLED")
+	field(ONAM, "ENABLED")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
+{
+	field(DESC, "Mimic panel Sequence setpoint")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+	field(THVL, "3")
+	field(FRVL, "4")
+	field(FVVL, "5")
+
+	field(ZRST, "Condense")
+	field(ONST, "Circulate")
+	field(TWST, "Condense & Circulate")
+	field(THST, "Temperature Control")
+	field(FRST, "Make Safe")
+	field(FVST, "Warm Up")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(calc, "$(P)MIMIC:SEQUENCE:_CALC")
+{
+	field(INPA, "$(P)MIMIC:SEQUENCE:SP MS")
+	field(CALC, "A+1")
+	field(FLNK, "$(P)MIMIC:SEQUENCE:_FAN")
+}
+
+record(fanout, "$(P)MIMIC:SEQUENCE:_FAN")
+{
+	field(SELL, "$(P)MIMIC:SEQUENCE:_CALC")
+	field(SELM, "Specified")
+	field(LNK1, "$(P)MIMIC:SEQUENCE:_CONDENSE:SP")
+	field(LNK2, "$(P)MIMIC:SEQUENCE:_CIRCULATE:SP")
+	field(LNK3, "$(P)MIMIC:SEQUENCE:_CIRC_AND_COND:SP")
+	field(LNK4, "$(P)MIMIC:SEQUENCE:TEMP:SP")
+	field(LNK5, "$(P)MIMIC:SEQUENCE:_MAKESAFE:SP")
+	field(LNK6, "$(P)MIMIC:SEQUENCE:_WARMUP:SP")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_CONDENSE:SP")
+{
+	field(DESC, "Mimic panel Sequence condense sp")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto condense $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "CONDENSE")
+	field(ONAM, "CONDENSE")
+
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_CIRCULATE:SP")
+{
+	field(DESC, "Mimic panel Sequence circulate sp")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto circulate $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "CIRCULATE")
+	field(ONAM, "CIRCULATE")
+
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_CIRC_AND_COND:SP")
+{
+	field(DESC, "Mimic condense & circulate sp")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto condenseAndCirculate $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "CONDENSE_AND_CIRCULATE")
+	field(ONAM, "CONDENSE_AND_CIRCULATE")
+
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)MIMIC:SEQUENCE:TEMP:SP")
+{
+	field(DESC, "Mimic panel Sequence temp setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto tempControl $(PORT)")
+	field(EGU, "K")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_MAKESAFE:SP")
+{
+	field(DESC, "Mimic panel Sequence make safe sp")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto makeSafe $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "MAKE_SAFE")
+	field(ONAM, "MAKE_SAFE")
+
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_WARMUP:SP")
+{
+	field(DESC, "Mimic panel Sequence warm up sp")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto warmUp $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "WARM_UP")
+	field(ONAM, "WARM_UP")
+
 	info(archive, "VAL")
 }
 

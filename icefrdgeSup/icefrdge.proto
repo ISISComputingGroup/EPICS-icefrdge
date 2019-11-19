@@ -201,14 +201,35 @@ getMCResistance {
 	in "MC-R=%f";
 }
 
-start {
-	out "s";
-}
-
 skip {
 	out "SKIP";
 }
 
 stop {
 	out "STOP";
+}
+
+condense {
+	out "CONDENSE";
+}
+
+circulate {
+	out "CIRCULATE";
+}
+
+condenseAndCirculate {
+	out "CONDENSE";
+	out "CIRCULATE";
+}
+
+tempControl {
+	out "TSET=%f";
+}
+
+makeSafe {
+	out "MAKE SAFE";
+}
+
+warmUp {
+	out "WARM UP";
 }
