@@ -667,8 +667,8 @@ record(bo, "$(P)MIMIC:SKIP:SP")
 	field(OUT, "@icefrdge.proto skip $(PORT)")
 	field(SDIS, "$(P)DISABLE")
 
-	field(ZNAM, "SKIP0")
-	field(ONAM, "SKIP1")
+	field(ZNAM, "SKIP")
+	field(ONAM, "SKIP")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -681,8 +681,8 @@ record(bo, "$(P)MIMIC:STOP:SP")
 	field(OUT, "@icefrdge.proto stop $(PORT)")
 	field(SDIS, "$(P)DISABLE")
 
-	field(ZNAM, "STOP0")
-	field(ONAM, "STOP1")
+	field(ZNAM, "STOP")
+	field(ONAM, "STOP")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -695,8 +695,8 @@ record(bo, "$(P)MIMIC:START:SP")
 
 	field(FLNK, "$(P)MIMIC:SEQUENCE:_CALC")
 
-	field(ZNAM, "DISABLED")
-	field(ONAM, "ENABLED")
+	field(ZNAM, "START")
+	field(ONAM, "START")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -753,8 +753,6 @@ record(bo, "$(P)MIMIC:SEQUENCE:_CONDENSE:SP")
 
 	field(ZNAM, "CONDENSE")
 	field(ONAM, "CONDENSE")
-
-	info(archive, "VAL")
 }
 
 record(bo, "$(P)MIMIC:SEQUENCE:_CIRCULATE:SP")
@@ -766,8 +764,6 @@ record(bo, "$(P)MIMIC:SEQUENCE:_CIRCULATE:SP")
 
 	field(ZNAM, "CIRCULATE")
 	field(ONAM, "CIRCULATE")
-
-	info(archive, "VAL")
 }
 
 record(bo, "$(P)MIMIC:SEQUENCE:_CIRC_AND_COND:SP")
@@ -779,8 +775,6 @@ record(bo, "$(P)MIMIC:SEQUENCE:_CIRC_AND_COND:SP")
 
 	field(ZNAM, "CONDENSE_AND_CIRCULATE")
 	field(ONAM, "CONDENSE_AND_CIRCULATE")
-
-	info(archive, "VAL")
 }
 
 record(ao, "$(P)MIMIC:SEQUENCE:TEMP:SP")
@@ -793,7 +787,6 @@ record(ao, "$(P)MIMIC:SEQUENCE:TEMP:SP")
 	field(SDIS, "$(P)DISABLE")
 
 	info(archive, "VAL")
-	info(INTEREST, "HIGH")
 }
 
 record(bo, "$(P)MIMIC:SEQUENCE:_MAKESAFE:SP")
@@ -805,8 +798,6 @@ record(bo, "$(P)MIMIC:SEQUENCE:_MAKESAFE:SP")
 
 	field(ZNAM, "MAKE_SAFE")
 	field(ONAM, "MAKE_SAFE")
-
-	info(archive, "VAL")
 }
 
 record(bo, "$(P)MIMIC:SEQUENCE:_WARMUP:SP")
@@ -818,8 +809,6 @@ record(bo, "$(P)MIMIC:SEQUENCE:_WARMUP:SP")
 
 	field(ZNAM, "WARM_UP")
 	field(ONAM, "WARM_UP")
-
-	info(archive, "VAL")
 }
 
 record(stringin, "$(P)MIMIC:INFO")
