@@ -822,6 +822,18 @@ record(bo, "$(P)MIMIC:SEQUENCE:_WARMUP:SP")
 	info(archive, "VAL")
 }
 
+record(stringin, "$(P)MIMIC:INFO")
+{
+	field(DESC, "Mimic panel info display")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getInfo $(PORT)")
+	field(SCAN, "1 second")
+
+	field(SDIS, "$(P)DISABLE")
+	info(archive, "VAL")
+	info(INTEREST, "HIGH")
+}
+
 #
 # Simulation records
 #

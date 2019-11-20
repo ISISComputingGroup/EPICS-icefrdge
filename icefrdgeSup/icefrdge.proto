@@ -233,3 +233,8 @@ makeSafe {
 warmUp {
 	out "WARM UP";
 }
+
+getInfo {
+	out "INFO?";
+	in "%#s";
+}
