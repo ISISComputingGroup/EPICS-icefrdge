@@ -30,6 +30,5 @@ record(ao, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM):SP")
 
 	field(SDIS, "$(P)DISABLE")
 
-	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }

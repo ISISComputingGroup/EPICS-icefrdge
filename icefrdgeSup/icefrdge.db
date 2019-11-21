@@ -149,8 +149,6 @@ record(ao, "$(P)LS:MC:TEMP:SP:_IF_ZERO")
 	field(OUT, "@icefrdge.proto setLakeshoreMCTempSetIfZero $(PORT)")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
-
-	info(archive, "VAL")
 }
 
 record(ao, "$(P)LS:MC:TEMP:SP:_IF_NOT_ZERO")
@@ -160,8 +158,6 @@ record(ao, "$(P)LS:MC:TEMP:SP:_IF_NOT_ZERO")
 	field(OUT, "@icefrdge.proto setLakeshoreMCTempSetIfNotZero $(PORT)")
 	field(EGU, "K")
 	field(SDIS, "$(P)DISABLE")
-
-	info(archive, "VAL")
 }
 
 record(ai, "$(P)LS:MC:TEMP")
@@ -604,7 +600,6 @@ record(ao, "$(P)NEEDLE_VALVE:SP")
 
 	field(SDIS, "$(P)DISABLE")
 
-	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -634,7 +629,6 @@ record(ai, "$(P)MC:TEMP")
 
 	field(SDIS, "$(P)DISABLE")
 
-	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -649,7 +643,6 @@ record(ai, "$(P)MC:RESISTANCE")
 
 	field(SDIS, "$(P)DISABLE")
 
-	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -682,7 +675,6 @@ record(mbbo, "$(P)MIMIC:MODE:SP")
 	field(ONST, "SEMI AUTOMATIC")
 	field(TWST, "AUTOMATIC")
 
-    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -711,9 +703,6 @@ record(bo, "$(P)MIMIC:SKIP:SP")
 
 	field(ZNAM, "SKIP")
 	field(ONAM, "SKIP")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
 }
 
 record(bo, "$(P)MIMIC:STOP:SP") 
@@ -725,9 +714,6 @@ record(bo, "$(P)MIMIC:STOP:SP")
 
 	field(ZNAM, "STOP")
 	field(ONAM, "STOP")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
 }
 
 record(bo, "$(P)MIMIC:START:SP") 
@@ -739,9 +725,6 @@ record(bo, "$(P)MIMIC:START:SP")
 
 	field(ZNAM, "START")
 	field(ONAM, "START")
-
-	info(INTEREST, "HIGH")
-	info(archive, "VAL")
 }
 
 record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
@@ -763,7 +746,6 @@ record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
 	field(FRST, "Make Safe")
 	field(FVST, "Warm Up")
 
-	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -847,8 +829,8 @@ record(stringin, "$(P)MIMIC:INFO")
 	field(SCAN, "1 second")
 
 	field(SDIS, "$(P)DISABLE")
+	
 	info(archive, "VAL")
-	info(INTEREST, "HIGH")
 }
 
 #

@@ -24,7 +24,6 @@ record(bo, "$(P)SOLENOID_VALVE$(VALVE_NUM):SP")
 	field(ZNAM, "CLOSED")
 	field(ONAM, "OPEN")
 
-	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 	
 }
