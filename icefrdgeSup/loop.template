@@ -4,6 +4,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):TSET:SP")
 	field(DTYP, "stream")
     field(OUT, "@icefrdge.proto setLoopTempPoint($(LOOP_NUM)) $(PORT)")
 	field(EGU, "K")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET:SP")
@@ -19,6 +20,7 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):TSET")
     field(INP, "@icefrdge.proto getLoopTempPoint($(LOOP_NUM)) $(PORT)")
     field(SCAN, "1 second")
 	field(EGU, "K")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET")
@@ -34,6 +36,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):P:SP")
 	field(DTYP, "stream")
     field(OUT, "@icefrdge.proto setLoopProportional($(LOOP_NUM)) $(PORT)")
 	field(EGU, "")
+	field(PREC, "3")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -53,6 +56,7 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):P")
     field(INP, "@icefrdge.proto getLoopProportional($(LOOP_NUM)) $(PORT)")
     field(SCAN, "10 second")
 	field(EGU, "")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):P")
@@ -68,6 +72,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):I:SP")
 	field(DTYP, "stream")
     field(OUT, "@icefrdge.proto setLoopIntegral($(LOOP_NUM)) $(PORT)")
 	field(EGU, "")
+	field(PREC, "3")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -87,6 +92,7 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):I")
     field(INP, "@icefrdge.proto getLoopIntegral($(LOOP_NUM)) $(PORT)")
     field(SCAN, "10 second")
 	field(EGU, "")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):I")
@@ -102,6 +108,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):D:SP")
 	field(DTYP, "stream")
     field(OUT, "@icefrdge.proto setLoopDerivative($(LOOP_NUM)) $(PORT)")
 	field(EGU, "")
+	field(PREC, "3")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -121,6 +128,7 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):D")
     field(INP, "@icefrdge.proto getLoopDerivative($(LOOP_NUM)) $(PORT)")
     field(SCAN, "10 second")
 	field(EGU, "")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D")
@@ -136,6 +144,7 @@ record(ao, "$(P)VTI:LOOP$(LOOP_NUM):RAMPRATE:SP")
 	field(DTYP, "stream")
     field(OUT, "@icefrdge.proto setLoopRampRate($(LOOP_NUM)) $(PORT)")
 	field(EGU, "K/min")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE:SP")
@@ -151,6 +160,7 @@ record(ai, "$(P)VTI:LOOP$(LOOP_NUM):RAMPRATE")
     field(INP, "@icefrdge.proto getLoopRampRate($(LOOP_NUM)) $(PORT)")
     field(SCAN, "1 second")
 	field(EGU, "K/min")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE")

@@ -2,6 +2,7 @@ record(ai, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM)")
 {
 	field(DESC, "Proportional valve $(VALVE_NUM)")
 	field(EGU, "")
+	field(PREC, "1")
 
 	# The mimic valve pvs are updated using record redirection, so only one of the 10 PVs need a SCAN, INP and DTYP field.
 	# Therefore, the macro is needed so when the valve num is not one, these fields will be commented out.
@@ -21,6 +22,7 @@ record(ao, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM):SP")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setProportionalValve($(VALVE_NUM)) $(PORT)")
 	field(EGU, "")
+	field(PREC, "1")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly

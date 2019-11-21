@@ -27,6 +27,8 @@ record(ai, "$(P)VTI:TEMP1")
 	field(INP, "@icefrdge.proto getCryoTemps($(P)) $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
+	field(PREC, "3")
+
     field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -37,6 +39,7 @@ record(ai, "$(P)VTI:TEMP2")
 {
 	field(DESC, "VTI temperature 2")
 	field(EGU, "K")
+	field(PREC, "3")
 
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -46,6 +49,7 @@ record(ai, "$(P)VTI:TEMP3")
 {
 	field(DESC, "VTI temperature 3")
 	field(EGU, "K")
+	field(PREC, "3")
 
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -55,6 +59,7 @@ record(ai, "$(P)VTI:TEMP4")
 {
 	field(DESC, "VTI temperature 4")
 	field(EGU, "K")
+	field(PREC, "3")
 
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -67,6 +72,8 @@ record(ai, "$(P)LS:MC:CERNOX")
 	field(INP, "@icefrdge.proto getMCCernox $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
+	field(PREC, "3")
+
 	field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -80,6 +87,8 @@ record(ai, "$(P)LS:MC:RUO")
 	field(INP, "@icefrdge.proto getMCRuO $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
+	field(PREC, "3")
+
 	field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -93,6 +102,8 @@ record(ai, "$(P)LS:STILL:TEMP")
 	field(INP, "@icefrdge.proto getMCStillTemp $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
+	field(PREC, "5")
+
 	field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -104,6 +115,7 @@ record(ao, "$(P)LS:MC:TEMP:SP")
 	field(DESC, "Lakshore MC temperature setpoint")
 	field(OUT, "$(P)LS:MC:TEMP:SP:_IS_ZERO.A PP")
 	field(EGU, "K")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:LS:MC:TEMP:SP")
@@ -155,6 +167,7 @@ record(ai, "$(P)LS:MC:TEMP")
 	field(INP, "@icefrdge.proto getLakeshoreMCTempSetpoint $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:LS:MC:TEMP")
@@ -170,6 +183,7 @@ record(ao, "$(P)LS:MC:P:SP")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setMCProportional($(P)) $(PORT)")
 	field(EGU, "")
+	field(PREC, "3")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -188,6 +202,7 @@ record(ao, "$(P)LS:MC:I:SP")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setMCIntegral($(P)) $(PORT)")
 	field(EGU, "")
+	field(PREC, "3")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -204,6 +219,7 @@ record(ao, "$(P)LS:MC:D:SP")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setMCDerivative($(P)) $(PORT)")
 	field(EGU, "")
+	field(PREC, "3")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -221,6 +237,7 @@ record(ai, "$(P)LS:MC:P")
 	field(INP, "@icefrdge.proto getMCPIDs($(P)) $(PORT)")
 	field(SCAN, "10 second")
 	field(EGU, "")
+	field(PREC, "3")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:LS:MC:P")
@@ -234,6 +251,8 @@ record(ai, "$(P)LS:MC:I")
 {
 	field(DESC, "Lakeshore mixing chamber integral")
 	field(EGU, "")
+	field(PREC, "3")
+
     field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -244,6 +263,8 @@ record(ai, "$(P)LS:MC:D")
 {
 	field(DESC, "Lakeshore mixing chamber derivative")
 	field(EGU, "")
+	field(PREC, "3")
+
     field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
@@ -329,6 +350,7 @@ record(ai, "$(P)LS:MC:HTR:PERCENT")
 	field(INP, "@icefrdge.proto getMCHeaterPercentage $(PORT)")
 	field(SCAN, "10 second")
 	field(EGU, "%")
+	field(PREC, "3")
 
 	field(SDIS, "$(P)DISABLE")
 
@@ -343,6 +365,7 @@ record(ai, "$(P)LS:STILL")
 	field(INP, "@icefrdge.proto getStillOutput $(PORT)")
 	field(SCAN, "10 second")
 	field(EGU, "%")
+	field(PREC, "3")
 
 	field(SDIS, "$(P)DISABLE")
 
@@ -504,6 +527,7 @@ record(ai, "$(P)PRESSURE1")
 	field(INP, "@icefrdge.proto getMimicPressures($(P)) $(PORT)")
 	field(SCAN, "5 second")
 	field(EGU, "Pa")
+	field(PREC, "2")
 
 	field(SDIS, "$(P)DISABLE")
 
@@ -515,6 +539,7 @@ record(ai, "$(P)PRESSURE2")
 {
 	field(DESC, "Pressure 2")
 	field(EGU, "Pa")
+	field(PREC, "2")
 
 	field(SDIS, "$(P)DISABLE")
 
@@ -526,6 +551,7 @@ record(ai, "$(P)PRESSURE3")
 {
 	field(DESC, "Pressure 3")
 	field(EGU, "Pa")
+	field(PREC, "2")
 
 	field(SDIS, "$(P)DISABLE")
 
@@ -537,6 +563,7 @@ record(ai, "$(P)PRESSURE4")
 {
 	field(DESC, "Pressure 4")
 	field(EGU, "Pa")
+	field(PREC, "2")
 
 	field(SDIS, "$(P)DISABLE")
 
@@ -548,6 +575,7 @@ record(ai, "$(P)NEEDLE_VALVE")
 {
 	field(DESC, "Needle valve")
 	field(EGU, "")
+	field(PREC, "1")
 
 	# The needle and proportional valve pvs are updated using record redirection, so only proportional 
 	# valve 1 needs a SCAN, INP and DTYP field.
@@ -558,12 +586,13 @@ record(ai, "$(P)NEEDLE_VALVE")
 	info(archive, "VAL")
 }
 
-record(ao, "$(P)NVALVE:SP")
+record(ao, "$(P)NEEDLE_VALVE:SP")
 {
 	field(DESC, "Needle valve setpoint")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setNeedleValve $(PORT)")
 	field(EGU, "")
+	field(PREC, "1")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -582,6 +611,7 @@ record(ai, "$(P)1K:TEMP")
 	field(INP, "@icefrdge.proto get1KStage $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
+	field(PREC, "5")
 
 	field(SDIS, "$(P)DISABLE")
 
@@ -626,6 +656,7 @@ record(calc, "$(P)MC:USER")
 	field(INPB, "$(P)MC:RESISTANCE MS")
 	field(CALC, "(A < 0.051?B:A)")
 	field(EGU, "K")
+	field(PREC, "5")
 
 	field(SDIS, "$(P)DISABLE")
 	field(ASG, "READONLY")
