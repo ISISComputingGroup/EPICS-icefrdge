@@ -747,7 +747,6 @@ record(bo, "$(P)MIMIC:START:SP")
 record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
 {
 	field(DESC, "Mimic panel Sequence setpoint")
-	field(FLNK, "$(P)MIMIC:SEQUENCE:_FAN")
 	field(SDIS, "$(P)DISABLE")
 
 	field(ZRVL, "0")
@@ -768,10 +767,17 @@ record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
 	info(archive, "VAL")
 }
 
+record(calc, "$(P)MIMIC:SEQUENCE:_CALC")
+{
+	field(INPA, "$(P)MIMIC:SEQUENCE:SP MS")
+	field(CALC, "A+1")
+	field(FLNK, "$(P)MIMIC:SEQUENCE:_FAN")
+}
+
 record(fanout, "$(P)MIMIC:SEQUENCE:_FAN")
 {
 	field(DESC, "processes correct pv for given mode")
-	field(SELL, "$(P)MIMIC:SEQUENCE:SP")
+	field(SELL, "$(P)MIMIC:SEQUENCE:_CALC")
 	field(SELM, "Specified")
 	field(LNK1, "$(P)MIMIC:SEQUENCE:_CONDENSE:SP")
 	field(LNK2, "$(P)MIMIC:SEQUENCE:_CIRCULATE:SP")
