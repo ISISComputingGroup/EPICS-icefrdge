@@ -9,6 +9,6 @@ file solenoid_valve_template.template {
 file $(UTILITIES)/db/error_setter.template {
     pattern {P, STREAM_PV, PV_NAME}
 
-    {"\$(P)", "MIMIC:V1", "MIMIC:SV1"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:SV2"}
+    {"\$(P)", "VALVE1", "SOLENOID_VALVE1"}
+    {"\$(P)", "VALVE1", "SOLENOID_VALVE2"}
 }

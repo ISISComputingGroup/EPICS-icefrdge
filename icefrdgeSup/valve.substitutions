@@ -17,13 +17,13 @@ file valve_template.template {
 file $(UTILITIES)/db/error_setter.template {
     pattern {P, STREAM_PV, PV_NAME}
 
-    {"\$(P)", "MIMIC:V1", "MIMIC:V2"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:V3"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:V4"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:V5"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:V6"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:V7"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:V8"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:V9"}
-    {"\$(P)", "MIMIC:V1", "MIMIC:V10"}
+    {"\$(P)", "VALVE1", "VALVE2"}
+    {"\$(P)", "VALVE1", "VALVE3"}
+    {"\$(P)", "VALVE1", "VALVE4"}
+    {"\$(P)", "VALVE1", "VALVE5"}
+    {"\$(P)", "VALVE1", "VALVE6"}
+    {"\$(P)", "VALVE1", "VALVE7"}
+    {"\$(P)", "VALVE1", "VALVE8"}
+    {"\$(P)", "VALVE1", "VALVE9"}
+    {"\$(P)", "VALVE1", "VALVE10"}
 }

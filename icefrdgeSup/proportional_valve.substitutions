@@ -10,7 +10,7 @@ file proportional_valve_template.template {
 file $(UTILITIES)/db/error_setter.template {
     pattern {P, STREAM_PV, PV_NAME}
 
-    {"\$(P)", "MIMIC:PV1", "MIMIC:PV2"}
-    {"\$(P)", "MIMIC:PV1", "MIMIC:PV4"}
-    {"\$(P)", "MIMIC:PV1", "MIMIC:NV"}
+    {"\$(P)", "PROPORTIONAL_VALVE1", "PROPORTIONAL_VALVE2"}
+    {"\$(P)", "PROPORTIONAL_VALVE1", "PROPORTIONAL_VALVE4"}
+    {"\$(P)", "PROPORTIONAL_VALVE1", "NEEDLE_VALVE"}
 }

@@ -1,4 +1,4 @@
-record(bi, "$(P)MIMIC:SV$(VALVE_NUM)")
+record(bi, "$(P)SOLENOID_VALVE$(VALVE_NUM)")
 {
 	field(DESC, "Solenoid valve $(VALVE_NUM) status")
 	field(SDIS, "$(P)DISABLE")
@@ -10,7 +10,7 @@ record(bi, "$(P)MIMIC:SV$(VALVE_NUM)")
 	info(archive, "VAL")
 }
 
-record(bo, "$(P)MIMIC:SV$(VALVE_NUM):SP")
+record(bo, "$(P)SOLENOID_VALVE$(VALVE_NUM):SP")
 {
 	field(DESC, "Solenoid valve $(VALVE_NUM) setpoint")
 	field(DTYP, "stream")
@@ -19,7 +19,7 @@ record(bo, "$(P)MIMIC:SV$(VALVE_NUM):SP")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
-	field(FLNK, "$(P)MIMIC:V1")
+	field(FLNK, "$(P)VALVE1")
 
 	field(ZNAM, "CLOSED")
 	field(ONAM, "OPEN")

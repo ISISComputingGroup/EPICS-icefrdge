@@ -165,7 +165,7 @@ getMimicValves {
 	in "SV1=%(\$1MIMIC:SV1:RAW.A)b,SV2=%(\$1MIMIC:SV2:RAW.A)b,V1=%b,V2=%(\$1MIMIC:V2:RAW.A)b,V3=%(\$1MIMIC:V3:RAW.A)b,V4=%(\$1MIMIC:V4:RAW.A)b,V5=%(\$1MIMIC:V5:RAW.A)b,V6=%(\$1MIMIC:V6:RAW.A)b,V7=%(\$1MIMIC:V7:RAW.A)b,V8=%(\$1MIMIC:V8:RAW.A)b,V9=%(\$1MIMIC:V9:RAW.A)b,V10=%(\$1MIMIC:V10:RAW.A)b";
 }
 
-setMimicValve {
+setValve {
 	out "V\$1=%b";
 }
 

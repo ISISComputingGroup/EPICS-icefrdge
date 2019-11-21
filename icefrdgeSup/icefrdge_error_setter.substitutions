@@ -8,7 +8,7 @@ file $(UTILITIES)/db/error_setter.template {
     {"\$(P)", "LS:MC:P", "LS:MC:I"}
     {"\$(P)", "LS:MC:P", "LS:MC:D"}
 
-    {"\$(P)", "MIMIC:PRESSURE1", "MIMIC:PRESSURE2"}
-    {"\$(P)", "MIMIC:PRESSURE1", "MIMIC:PRESSURE3"}
-    {"\$(P)", "MIMIC:PRESSURE1", "MIMIC:PRESSURE4"}
+    {"\$(P)", "PRESSURE1", "PRESSURE2"}
+    {"\$(P)", "PRESSURE1", "PRESSURE3"}
+    {"\$(P)", "PRESSURE1", "PRESSURE4"}
 }

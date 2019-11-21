@@ -1,6 +1,6 @@
-record(ai, "$(P)MIMIC:PV$(VALVE_NUM)")
+record(ai, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM)")
 {
-	field(DESC, "Mimic proportional valve $(VALVE_NUM)")
+	field(DESC, "Proportional valve $(VALVE_NUM)")
 	field(EGU, "")
 
 	# The mimic valve pvs are updated using record redirection, so only one of the 10 PVs need a SCAN, INP and DTYP field.
@@ -15,16 +15,16 @@ record(ai, "$(P)MIMIC:PV$(VALVE_NUM)")
 	info(archive, "VAL")
 }
 
-record(ao, "$(P)MIMIC:PV$(VALVE_NUM):SP")
+record(ao, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM):SP")
 {
-	field(DESC, "Mimic proportional valve $(VALVE_NUM) setpoint")
+	field(DESC, "Proportional valve $(VALVE_NUM) setpoint")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setProportionalValve($(VALVE_NUM)) $(PORT)")
 	field(EGU, "")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
-	field(FLNK, "$(P)MIMIC:PV1")
+	field(FLNK, "$(P)PROPORTIONAL_VALVE1")
 
 	field(SDIS, "$(P)DISABLE")
 

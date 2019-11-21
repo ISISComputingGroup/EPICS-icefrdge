@@ -1,11 +1,11 @@
-record(bi, "$(P)MIMIC:V$(VALVE_NUM)")
+record(bi, "$(P)VALVE$(VALVE_NUM)")
 {
-	field(DESC, "Mimic valve $(VALVE_NUM) status")
+	field(DESC, "Valve $(VALVE_NUM) status")
 	
 	# The mimic valve pvs are updated using record redirection, so only one of the 10 PVs need a SCAN, INP and DTYP field.
 	# Therefore, the macro is needed so when the valve num is not one, these fields will be commented out.
 	$(IF_ONE) field(DTYP, "stream")
-	$(IF_ONE) field(INP, "@icefrdge.proto getMimicValves($(P)) $(PORT)")
+	$(IF_ONE) field(INP, "@icefrdge.proto getValves($(P)) $(PORT)")
 	$(IF_ONE) field(SCAN, "5 second")
 	field(SDIS, "$(P)DISABLE")
 
@@ -16,16 +16,16 @@ record(bi, "$(P)MIMIC:V$(VALVE_NUM)")
 	info(archive, "VAL")
 }
 
-record(bo, "$(P)MIMIC:V$(VALVE_NUM):SP")
+record(bo, "$(P)VALVES$(VALVE_NUM):SP")
 {
-	field(DESC, "Mimic valve $(VALVE_NUM) setpoint")
+	field(DESC, "Valve $(VALVE_NUM) setpoint")
 	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto setMimicValve($(VALVE_NUM)) $(PORT)")
+	field(OUT, "@icefrdge.proto setValve($(VALVE_NUM)) $(PORT)")
 	field(SDIS, "$(P)DISABLE")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
-	field(FLNK, "$(P)MIMIC:V1")
+	field(FLNK, "$(P)VALVE1")
 
 	field(ZNAM, "CLOSED")
 	field(ONAM, "OPEN")
