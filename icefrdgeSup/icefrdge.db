@@ -108,6 +108,7 @@ record(ai, "$(P)LS:STILL:TEMP")
 
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
 }
 
 record(ao, "$(P)LS:MC:TEMP:SP")
@@ -616,6 +617,7 @@ record(ai, "$(P)1K:TEMP")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
 }
 
 record(ai, "$(P)MC:TEMP")
@@ -660,6 +662,7 @@ record(calc, "$(P)MC:USER")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
 }
 
 record(mbbo, "$(P)MIMIC:MODE:SP")
@@ -829,8 +832,9 @@ record(stringin, "$(P)MIMIC:INFO")
 	field(SCAN, "1 second")
 
 	field(SDIS, "$(P)DISABLE")
-	
+
 	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
 }
 
 #
