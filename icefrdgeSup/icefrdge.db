@@ -126,12 +126,14 @@ record(ao, "$(P)LS:MC:TEMP:SP")
 
 record(calc, "$(P)LS:MC:TEMP:SP:_IS_ZERO")
 {
+	field(DESC, "Calculation to check if MC temp is 0")
 	field(CALC, "(A < 0.00001) ? 1 : 2")
 	field(FLNK, "$(P)LS:MC:TEMP:SP:_FAN")
 }
 
 record(dfanout, "$(P)LS:MC:TEMP:SP:_FAN")
 {
+	field(DESC, "processes pv if mc temp is zero or not")
 	field(DOL, "$(P)LS:MC:TEMP:SP")
 	field(OMSL, "closed_loop")
 	field(SELL, "$(P)LS:MC:TEMP:SP:_IS_ZERO")
@@ -142,6 +144,7 @@ record(dfanout, "$(P)LS:MC:TEMP:SP:_FAN")
 
 record(ao, "$(P)LS:MC:TEMP:SP:_IF_ZERO")
 {
+	field(DESC, "sends correct msgs in case mc temp zero")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setLakeshoreMCTempSetIfZero $(PORT)")
 	field(EGU, "K")
@@ -152,6 +155,7 @@ record(ao, "$(P)LS:MC:TEMP:SP:_IF_ZERO")
 
 record(ao, "$(P)LS:MC:TEMP:SP:_IF_NOT_ZERO")
 {
+	field(DESC, "correct msgs in case mc temp not zero")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setLakeshoreMCTempSetIfNotZero $(PORT)")
 	field(EGU, "K")
@@ -524,7 +528,7 @@ record(ai, "$(P)PRESSURE1")
 {
 	field(DESC, "Pressure 1")
 	field(DTYP, "stream")
-	field(INP, "@icefrdge.proto getMimicPressures($(P)) $(PORT)")
+	field(INP, "@icefrdge.proto getPressures($(P)) $(PORT)")
 	field(SCAN, "5 second")
 	field(EGU, "Pa")
 	field(PREC, "2")
@@ -596,7 +600,7 @@ record(ao, "$(P)NEEDLE_VALVE:SP")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
-	field(FLNK, "$(P)MIMIC:PV1")
+	field(FLNK, "$(P)PROPORTIONAL_VALVE1")
 
 	field(SDIS, "$(P)DISABLE")
 
@@ -684,6 +688,7 @@ record(mbbo, "$(P)MIMIC:MODE:SP")
 
 record(calcout, "$(P)MIMIC:MODE:SP:_CALC") 
 {
+	field(DESC, "sets disable bit based on mode")
 	field(INPA, "$(P)MIMIC:MODE:SP CP MS")
 	field(CALC, "A=1?0:1")
 	field(OUT, "$(P)MIMIC:MODE:SP:_FAN PP")
@@ -691,6 +696,7 @@ record(calcout, "$(P)MIMIC:MODE:SP:_CALC")
 
 record(dfanout, "$(P)MIMIC:MODE:SP:_FAN") 
 {
+	field(DESC, "disables/enables mimic buttons")
 	field(OUTA, "$(P)MIMIC:START:SP.DISP")
     field(OUTB, "$(P)MIMIC:STOP:SP.DISP")
     field(OUTC, "$(P)MIMIC:SKIP:SP.DISP")
@@ -741,6 +747,7 @@ record(bo, "$(P)MIMIC:START:SP")
 record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
 {
 	field(DESC, "Mimic panel Sequence setpoint")
+	field(FLNK, "$(P)MIMIC:SEQUENCE:_FAN")
 	field(SDIS, "$(P)DISABLE")
 
 	field(ZRVL, "0")
@@ -761,16 +768,10 @@ record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
 	info(archive, "VAL")
 }
 
-record(calc, "$(P)MIMIC:SEQUENCE:_CALC")
-{
-	field(INPA, "$(P)MIMIC:SEQUENCE:SP MS")
-	field(CALC, "A+1")
-	field(FLNK, "$(P)MIMIC:SEQUENCE:_FAN")
-}
-
 record(fanout, "$(P)MIMIC:SEQUENCE:_FAN")
 {
-	field(SELL, "$(P)MIMIC:SEQUENCE:_CALC")
+	field(DESC, "processes correct pv for given mode")
+	field(SELL, "$(P)MIMIC:SEQUENCE:SP")
 	field(SELM, "Specified")
 	field(LNK1, "$(P)MIMIC:SEQUENCE:_CONDENSE:SP")
 	field(LNK2, "$(P)MIMIC:SEQUENCE:_CIRCULATE:SP")

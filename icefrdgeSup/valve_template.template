@@ -16,7 +16,7 @@ record(bi, "$(P)VALVE$(VALVE_NUM)")
 	info(archive, "VAL")
 }
 
-record(bo, "$(P)VALVES$(VALVE_NUM):SP")
+record(bo, "$(P)VALVE$(VALVE_NUM):SP")
 {
 	field(DESC, "Valve $(VALVE_NUM) setpoint")
 	field(DTYP, "stream")
