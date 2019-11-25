@@ -839,7 +839,7 @@ record(stringin, "$(P)MIMIC:INFO")
 
 record(bo, "$(P)MIMIC:NVMODE:SP") 
 {
-	field(DESC, "Mimic panel nv mode setpoint")
+	field(DESC, "Mimic panel needle valve mode setpoint")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setNVMode $(PORT)")
 
@@ -857,7 +857,7 @@ record(bo, "$(P)MIMIC:NVMODE:SP")
 
 record(bi, "$(P)MIMIC:NVMODE") 
 {
-	field(DESC, "Mimic panel nv mode")
+	field(DESC, "Mimic panel needle valve mode")
 	field(DTYP, "stream")
 	field(INP, "@icefrdge.proto getNVMode $(PORT)")
 	field(SCAN, "10 second")
