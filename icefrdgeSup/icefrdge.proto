@@ -238,3 +238,12 @@ getInfo {
 	out "INFO?";
 	in "%#s";
 }
+
+setNVMode {
+	out "NVMODE=%{MANUAL|AUTO}";
+}
+
+getNVMode {
+	out "NVMODE?";
+	in "%{MANUAL|AUTO}";
+}

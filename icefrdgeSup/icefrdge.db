@@ -837,6 +837,42 @@ record(stringin, "$(P)MIMIC:INFO")
 	info(alarm, "ICEFRDGE")
 }
 
+record(bo, "$(P)MIMIC:NVMODE:SP") 
+{
+	field(DESC, "Mimic panel nv mode setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setNVMode $(PORT)")
+
+	field(FLNK, "$(P)MIMIC:NVMODE")
+
+	field(ZNAM, "MANUAL")
+	field(ONAM, "AUTO")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:MIMIC:NVMODE:SP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)MIMIC:NVMODE") 
+{
+	field(DESC, "Mimic panel nv mode")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getNVMode $(PORT)")
+	field(SCAN, "10 second")
+	
+	field(ZNAM, "MANUAL")
+	field(ONAM, "AUTO")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:MIMIC:NVMODE")
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
 #
 # Simulation records
 #
@@ -865,3 +901,9 @@ record(mbbo, "$(P)SIM:LS:VLTG:RANGE:SP") {
 
 alias("$(P)SIM:LS:VLTG:RANGE:SP", "$(P)SIM:LS:VLTG:RANGE:CH5")
 alias("$(P)SIM:LS:VLTG:RANGE:SP", "$(P)SIM:LS:VLTG:RANGE:CH6")
+
+record(bo, "$(P)SIM:MIMIC:NVMODE:SP") {
+	
+}
+
+alias("$(P)SIM:MIMIC:NVMODE:SP", "$(P)SIM:MIMIC:NVMODE")
