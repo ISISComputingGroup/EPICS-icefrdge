@@ -247,3 +247,20 @@ getNVMode {
 	out "NVMODE?";
 	in "%{MANUAL|AUTO}";
 }
+
+set1KPump {
+	out "1KPUMP=%b";
+}
+
+getPumps {
+	out "PUMPS?";
+	in "1KPUMP=%{OFF|ON},HE3PUMP=%(\$1HE3:PUMP:RAW.A){OFF|ON},ROOTS=%(\$1ROOTS:RAW.A){OFF|ON}";
+}
+
+setHe3Pump {
+	out "HE3PUMP=%b";
+}
+
+setRootsPump {
+	out "ROOTS=%b";
+}

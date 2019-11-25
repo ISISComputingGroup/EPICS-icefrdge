@@ -837,39 +837,129 @@ record(stringin, "$(P)MIMIC:INFO")
 	info(alarm, "ICEFRDGE")
 }
 
-record(bo, "$(P)MIMIC:NVMODE:SP") 
+record(bo, "$(P)NVMODE:SP") 
 {
-	field(DESC, "Mimic panel needle valve mode setpoint")
+	field(DESC, "Needle valve mode auto/manual sp")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setNVMode $(PORT)")
 
-	field(FLNK, "$(P)MIMIC:NVMODE")
+	field(FLNK, "$(P)NVMODE")
 
 	field(ZNAM, "MANUAL")
 	field(ONAM, "AUTO")
 
 	field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:MIMIC:NVMODE:SP")
+    field(SIOL, "$(P)SIM:NVMODE:SP")
     field(SDIS, "$(P)DISABLE")
 
 	info(archive, "VAL")
 }
 
-record(bi, "$(P)MIMIC:NVMODE") 
+record(bi, "$(P)NVMODE") 
 {
-	field(DESC, "Mimic panel needle valve mode")
+	field(DESC, "Needle valve mode auto/manual")
 	field(DTYP, "stream")
 	field(INP, "@icefrdge.proto getNVMode $(PORT)")
 	field(SCAN, "10 second")
-	
+
 	field(ZNAM, "MANUAL")
 	field(ONAM, "AUTO")
 
 	field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:MIMIC:NVMODE")
+    field(SIOL, "$(P)SIM:NVMODE")
     field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)1K:PUMP:SP") 
+{
+	field(DESC, "1K pump on/off setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto set1KPump $(PORT)")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	field(FLNK, "$(P)1K:PUMP")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:1K:PUMP:SP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)1K:PUMP") 
+{
+	field(DESC, "1K pump on/off")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getPumps($(P)) $(PORT)")
+	field(SCAN, "5 second")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:1K:PUMP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)HE3:PUMP:SP") 
+{
+	field(DESC, "Helium 3 pump on/off setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setHe3Pump $(PORT)")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	field(SDIS, "$(P)DISABLE")
+	field(FLNK, "$(P)1K:PUMP")
+
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)HE3:PUMP") 
+{
+	field(DESC, "Helium 3 pump on/off")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)ROOTS:SP") 
+{
+	field(DESC, "Roots pump on/off setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setRootsPump $(PORT)")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	field(SDIS, "$(P)DISABLE")
+	field(FLNK, "$(P)1K:PUMP")
+
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)ROOTS") 
+{
+	field(DESC, "Roots pump on/off")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 
@@ -902,8 +992,14 @@ record(mbbo, "$(P)SIM:LS:VLTG:RANGE:SP") {
 alias("$(P)SIM:LS:VLTG:RANGE:SP", "$(P)SIM:LS:VLTG:RANGE:CH5")
 alias("$(P)SIM:LS:VLTG:RANGE:SP", "$(P)SIM:LS:VLTG:RANGE:CH6")
 
-record(bo, "$(P)SIM:MIMIC:NVMODE:SP") {
+record(bo, "$(P)SIM:NVMODE:SP") {
 	
 }
 
-alias("$(P)SIM:MIMIC:NVMODE:SP", "$(P)SIM:MIMIC:NVMODE")
+alias("$(P)SIM:NVMODE:SP", "$(P)SIM:NVMODE")
+
+record(bo, "$(P)SIM:1K:PUMP:SP") {
+	
+}
+
+alias("$(P)SIM:1K:PUMP:SP", "$(P)SIM:1K:PUMP")

@@ -11,4 +11,7 @@ file $(UTILITIES)/db/error_setter.template {
     {"\$(P)", "PRESSURE1", "PRESSURE2"}
     {"\$(P)", "PRESSURE1", "PRESSURE3"}
     {"\$(P)", "PRESSURE1", "PRESSURE4"}
+
+    {"\$(P)", "1K:PUMP", "HE3:PUMP"}
+    {"\$(P)", "1K:PUMP", "ROOTS"}
 }
