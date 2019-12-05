@@ -32,3 +32,10 @@ record(ao, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM):SP")
 
 	info(archive, "VAL")
 }
+
+record(calc, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM):_CALC")
+{
+	field(DESC, "Calc to check if PV is 0 or greater")
+	field(INPA, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM) CP MS")
+	field(CALC, "(A < 0.00001) ? 0 : 1")
+}
