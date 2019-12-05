@@ -604,6 +604,13 @@ record(ao, "$(P)NEEDLE_VALVE:SP")
 	info(archive, "VAL")
 }
 
+record(calc, "$(P)NEEDLE_VALVE:_CALC")
+{
+	field(DESC, "Calc to check if NV is 0 or greater")
+	field(INPA, "$(P)NEEDLE_VALVE CP MS")
+	field(CALC, "(A < 0.00001) ? 0 : 1")
+}
+
 record(ai, "$(P)1K:TEMP")
 {
 	field(DESC, "1K stage temperature")
