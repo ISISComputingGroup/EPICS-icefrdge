@@ -840,17 +840,20 @@ record(bo, "$(P)MIMIC:SEQUENCE:_WARMUP")
 	field(SDIS, "$(P)DISABLE")
 }
 
-record(stringin, "$(P)MIMIC:INFO")
+record(waveform, "$(P)MIMIC:INFO")
 {
-	field(DESC, "Mimic panel info display")
+    field(DESC, "Mimic panel info display")
 	field(DTYP, "stream")
-	field(INP, "@icefrdge.proto getInfo $(PORT)")
-	field(SCAN, "1 second")
-
-	field(SDIS, "$(P)DISABLE")
-
+    field(NELM, "512")
+    field(FTVL, "CHAR")
+    field(INP, "@icefrdge.proto getInfo $(PORT)")
+    field(SCAN, "1 second")
+	
+	info(INTEREST, "MEDIUM")
 	info(archive, "VAL")
 	info(alarm, "ICEFRDGE")
+	
+    field(SDIS, "$(P)DISABLE")
 }
 
 record(bo, "$(P)NVMODE:SP") 
