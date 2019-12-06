@@ -809,7 +809,7 @@ record(ao, "$(P)MIMIC:SEQUENCE:_TEMP_CONTROL")
 	field(DOL, "$(P)MIMIC:SEQUENCE:TEMP:SP")
 	field(OMSL, "closed_loop")
 	field(DTYP, "stream")
-	field(OUT, "@icefrdge.proto tempControl $(PORT)")
+	field(OUT, "@icefrdge.proto setTempControl $(PORT)")
 
 	field(SDIS, "$(P)DISABLE")
 }
@@ -821,6 +821,21 @@ record(ao, "$(P)MIMIC:SEQUENCE:TEMP:SP")
 
 	field(SDIS, "$(P)DISABLE")
 
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MIMIC:SEQUENCE:TEMP")
+{
+	field(DESC, "Mimic panel Sequence temp")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getTempControl $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "3")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
 

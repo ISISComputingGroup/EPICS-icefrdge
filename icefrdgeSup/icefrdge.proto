@@ -1,4 +1,4 @@
-Terminator = LF;
+Terminator = CR LF;
 
 getCryoTemps {
 	out "CRYO-TEMPS?";
@@ -222,8 +222,13 @@ condenseAndCirculate {
 	out "CIRCULATE";
 }
 
-tempControl {
+setTempControl {
 	out "TSET=%f";
+}
+
+getTempControl {
+	out "TSET?";
+	in "TSET=%f";
 }
 
 makeSafe {
