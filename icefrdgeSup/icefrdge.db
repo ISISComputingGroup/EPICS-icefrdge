@@ -871,6 +871,20 @@ record(waveform, "$(P)MIMIC:INFO")
     field(SDIS, "$(P)DISABLE")
 }
 
+record(stringin, "$(P)STATE")
+{
+    field(DESC, "Device state")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getState $(PORT)")
+    field(SCAN, "1 second")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
+	
+    field(SDIS, "$(P)DISABLE")
+}
+
 record(bo, "$(P)NVMODE:SP") 
 {
 	field(DESC, "Needle valve mode auto/manual sp")

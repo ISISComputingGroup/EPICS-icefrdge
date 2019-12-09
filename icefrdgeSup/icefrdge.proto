@@ -245,6 +245,11 @@ getInfo {
 	in "%512c";
 }
 
+getState {
+	out "STATE?";
+	in "%#s";
+}
+
 setNVMode {
 	out "NVMODE=%{MANUAL|AUTO}";
 }
