@@ -7,6 +7,7 @@ getCryoTemps {
 
 setLoopTempPoint {
 	out "CRYO-TSET=\$1,%f";
+	in "OK";
 }
 
 getLoopTempPoint {
@@ -16,6 +17,7 @@ getLoopTempPoint {
 
 setLoopProportional {
 	out "CRYO-P=\$1,%f";
+	in "OK";
 }
 
 getLoopProportional {
@@ -25,6 +27,7 @@ getLoopProportional {
 
 setLoopIntegral {
 	out "CRYO-I=\$1,%f";
+	in "OK";
 }
 
 getLoopIntegral {
@@ -34,6 +37,7 @@ getLoopIntegral {
 
 setLoopDerivative {
 	out "CRYO-D=\$1,%f";
+	in "OK";
 }
 
 getLoopDerivative {
@@ -43,6 +47,7 @@ getLoopDerivative {
 
 setLoopRampRate {
 	out "CRYO-RAMP=\$1,%f";
+	in "OK";
 }
 
 getLoopRampRate {
@@ -67,18 +72,24 @@ getMCStillTemp {
 
 setLakeshoreMCTempSetIfZero {
 	out "LS-DIRECT-SET=SETP %f";
+	in "Set LakeShore 370";
 
 	out "LS-DIRECT-SET=SCAN 6,1";
+	in "Set LakeShore 370";
 
 	out "LS-DIRECT-SET=CMODE 4";
+	in "Set LakeShore 370";
 }
 
 setLakeshoreMCTempSetIfNotZero {
 	out "LS-DIRECT-SET=SETP %f";
+	in "Set LakeShore 370";
 
 	out "LS-DIRECT-SET=SCAN 6,0";
+	in "Set LakeShore 370";
 
 	out "LS-DIRECT-SET=CMODE 1";
+	in "Set LakeShore 370";
 }
 
 getLakeshoreMCTempSetpoint {
@@ -91,6 +102,7 @@ setMCProportional {
 	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
 	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+	in "Set LakeShore 370";
 }
 
 setMCIntegral {
@@ -98,6 +110,7 @@ setMCIntegral {
 	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
 	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%f,%(\$1LS:MC:D:RAW.A)f";
+	in "Set LakeShore 370";
 }
 
 setMCDerivative {
@@ -105,6 +118,7 @@ setMCDerivative {
 	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
 	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%f";
+	in "Set LakeShore 370";
 }
 
 getMCPIDs {
@@ -114,8 +128,10 @@ getMCPIDs {
 
 setMCHeaterRange {
 	out "LS-DIRECT-SET=CSET 06,0,1,025,1,%{0|1|2|3|4|5|6|7|8},+388.000";
+	in "Set LakeShore 370";
 
 	out "LS-DIRECT-SET=HTRRNG %{0|1|2|3|4|5|6|7|8}";
+	in "Set LakeShore 370";
 }
 
 getMcHeaterRange {
@@ -138,11 +154,13 @@ setExcVoltageRange {
 	in "%*d,%*2d,%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
 
 	out "LS-DIRECT-SET=RDGRNG 05,0,%{01|02|03|04|05|06|07|08|09|10|11|12},%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
+	in "Set LakeShore 370";
 
 	out "LS-DIRECT-READ=RDGRNG? 6";
 	in "%*d,%*2d,%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
 
 	out "LS-DIRECT-SET=RDGRNG 06,0,%{01|02|03|04|05|06|07|08|09|10|11|12},%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
+	in "Set LakeShore 370";
 }
 
 getCh5ExcVoltageRange {
@@ -167,10 +185,12 @@ getValves {
 
 setValve {
 	out "V\$1=%b";
+	in "OK";
 }
 
 setSolenoidValve {
 	out "SV\$1=%b";
+	in "OK";
 }
 
 getProportionalValves {
@@ -180,10 +200,12 @@ getProportionalValves {
 
 setProportionalValve {
 	out "PV\$1=%f";
+	in "OK";
 }
 
 setNeedleValve {
 	out "NV=%f";
+	in "OK";
 }
 
 get1KStage {
@@ -203,27 +225,35 @@ getMCResistance {
 
 skip {
 	out "SKIP";
+	in "OK";
 }
 
 stop {
 	out "STOP";
+	in "OK";
 }
 
 condense {
 	out "CONDENSE";
+	in "OK";
 }
 
 circulate {
 	out "CIRCULATE";
+	in "OK";
 }
 
 condenseAndCirculate {
 	out "CONDENSE";
+	in "OK";
+
 	out "CIRCULATE";
+	in "OK";
 }
 
 setTempControl {
 	out "TSET=%f";
+	in "OK";
 }
 
 getTempControl {
@@ -233,10 +263,12 @@ getTempControl {
 
 makeSafe {
 	out "MAKE SAFE";
+	in "OK";
 }
 
 warmUp {
 	out "WARM UP";
+	in "OK";
 }
 
 getInfo {
@@ -252,6 +284,7 @@ getState {
 
 setNVMode {
 	out "NVMODE=%{MANUAL|AUTO}";
+	in "OK";
 }
 
 getNVMode {
@@ -261,6 +294,7 @@ getNVMode {
 
 set1KPump {
 	out "1KPUMP=%b";
+	in "OK";
 }
 
 getPumps {
@@ -270,8 +304,10 @@ getPumps {
 
 setHe3Pump {
 	out "HE3PUMP=%b";
+	in "OK";
 }
 
 setRootsPump {
 	out "ROOTS=%b";
+	in "OK";
 }
