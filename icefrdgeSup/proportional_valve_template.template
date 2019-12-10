@@ -24,6 +24,9 @@ record(ao, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM):SP")
 	field(EGU, "")
 	field(PREC, "1")
 
+	field(DRVL, "0")
+	field(DRVH, "100")
+
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
 	field(FLNK, "$(P)PROPORTIONAL_VALVE1")

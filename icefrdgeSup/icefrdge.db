@@ -118,6 +118,9 @@ record(ao, "$(P)LS:MC:TEMP:SP")
 	field(EGU, "K")
 	field(PREC, "3")
 
+	field(DRVL, "0")
+	field(DRVH, "300")
+
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:LS:MC:TEMP:SP")
     field(SDIS, "$(P)DISABLE")
@@ -594,6 +597,9 @@ record(ao, "$(P)NEEDLE_VALVE:SP")
 	field(OUT, "@icefrdge.proto setNeedleValve $(PORT)")
 	field(EGU, "")
 	field(PREC, "1")
+
+	field(DRVL, "0")
+	field(DRVH, "100")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
