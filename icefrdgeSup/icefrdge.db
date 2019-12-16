@@ -1,5 +1,3 @@
-######### Simulation SECTION ##############
-
 record(bo, "$(P)SIM") 
 {
 	field(DESC, "For the recsim")
