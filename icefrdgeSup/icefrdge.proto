@@ -1,0 +1,313 @@
+Terminator = CR LF;
+
+getCryoTemps {
+	out "CRYO-TEMPS?";
+	in "CRYO-TEMPS=%f,%(\$1VTI:TEMP2:RAW.A)f,%(\$1VTI:TEMP3:RAW.A)f,%(\$1VTI:TEMP4:RAW.A)f";
+}
+
+setLoopTempPoint {
+	out "CRYO-TSET=\$1,%f";
+	in "OK";
+}
+
+getLoopTempPoint {
+	out "CRYO-TSET\$1?";
+	in "CRYO-TSET\$1=%f";
+}
+
+setLoopProportional {
+	out "CRYO-P=\$1,%f";
+	in "OK";
+}
+
+getLoopProportional {
+	out "CRYO-P\$1?";
+	in "CRYO-P\$1=%f";
+}
+
+setLoopIntegral {
+	out "CRYO-I=\$1,%f";
+	in "OK";
+}
+
+getLoopIntegral {
+	out "CRYO-I\$1?";
+	in "CRYO-I\$1=%f";
+}
+
+setLoopDerivative {
+	out "CRYO-D=\$1,%f";
+	in "OK";
+}
+
+getLoopDerivative {
+	out "CRYO-D\$1?";
+	in "CRYO-D\$1=%f";
+}
+
+setLoopRampRate {
+	out "CRYO-RAMP=\$1,%f";
+	in "OK";
+}
+
+getLoopRampRate {
+	out "CRYO-RAMP\$1?";
+	in "CRYO-RAMP\$1=%f";
+}
+
+getMCCernox {
+	out "LS-DIRECT-READ=RDGK? 4";
+	in "%f";
+}
+
+getMCRuO {
+	out "LS-DIRECT-READ=RDGK? 6";
+	in "%f";
+}
+
+getMCStillTemp {
+	out "STILL?";
+	in "STILL=%f";
+}
+
+setLakeshoreMCTempSetIfZero {
+	out "LS-DIRECT-SET=SETP %f";
+	in "Set LakeShore 370";
+
+	out "LS-DIRECT-SET=SCAN 6,1";
+	in "Set LakeShore 370";
+
+	out "LS-DIRECT-SET=CMODE 4";
+	in "Set LakeShore 370";
+}
+
+setLakeshoreMCTempSetIfNotZero {
+	out "LS-DIRECT-SET=SETP %f";
+	in "Set LakeShore 370";
+
+	out "LS-DIRECT-SET=SCAN 6,0";
+	in "Set LakeShore 370";
+
+	out "LS-DIRECT-SET=CMODE 1";
+	in "Set LakeShore 370";
+}
+
+getLakeshoreMCTempSetpoint {
+	out "LS-DIRECT-READ=SETP?";
+	in "%f";
+}
+
+setMCProportional {
+	out "LS-DIRECT-READ=PID?";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+
+	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+	in "Set LakeShore 370";
+}
+
+setMCIntegral {
+	out "LS-DIRECT-READ=PID?";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+
+	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%f,%(\$1LS:MC:D:RAW.A)f";
+	in "Set LakeShore 370";
+}
+
+setMCDerivative {
+	out "LS-DIRECT-READ=PID?";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+
+	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%f";
+	in "Set LakeShore 370";
+}
+
+getMCPIDs {
+	out "LS-DIRECT-READ=PID?";
+	in "%f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+}
+
+setMCHeaterRange {
+	out "LS-DIRECT-SET=CSET 06,0,1,025,1,%{0|1|2|3|4|5|6|7|8},+388.000";
+	in "Set LakeShore 370";
+
+	out "LS-DIRECT-SET=HTRRNG %{0|1|2|3|4|5|6|7|8}";
+	in "Set LakeShore 370";
+}
+
+getMcHeaterRange {
+	out "LS-DIRECT-READ=HTRRNG?";
+	in "%{0|1|2|3|4|5|6|7|8}";
+}
+
+getMcHeaterPercentage {
+	out "LS-DIRECT-READ=HTR?";
+	in "%f";
+}
+
+getStillOutput {
+	out "LS-DIRECT-READ=STILL?";
+	in "%f";
+}
+
+setExcVoltageRange {
+	out "LS-DIRECT-READ=RDGRNG? 5";
+	in "%*d,%*2d,%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
+
+	out "LS-DIRECT-SET=RDGRNG 05,0,%{01|02|03|04|05|06|07|08|09|10|11|12},%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
+	in "Set LakeShore 370";
+
+	out "LS-DIRECT-READ=RDGRNG? 6";
+	in "%*d,%*2d,%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
+
+	out "LS-DIRECT-SET=RDGRNG 06,0,%{01|02|03|04|05|06|07|08|09|10|11|12},%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
+	in "Set LakeShore 370";
+}
+
+getCh5ExcVoltageRange {
+	out "LS-DIRECT-READ=RDGRNG? 5";
+	in "%*d,%{01|02|03|04|05|06|07|08|09|10|11|12},%*2d,%*d,%*d";
+}
+
+getCh6ExcVoltageRange {
+	out "LS-DIRECT-READ=RDGRNG? 6";
+	in "%*d,%{01|02|03|04|05|06|07|08|09|10|11|12},%*2d,%*d,%*d";
+}
+
+getPressures {
+	out "P?";
+	in "P1=%f,P2=%(\$1PRESSURE2:RAW.A)f,P3=%(\$1PRESSURE3:RAW.A)f,P4=%(\$1PRESSURE4:RAW.A)f";
+}
+
+getValves {
+	out "VALVES?";
+	in "SV1=%(\$1SOLENOID_VALVE1:RAW.A){CLOSED|OPEN},SV2=%(\$1SOLENOID_VALVE2:RAW.A){CLOSED|OPEN},V1=%{CLOSED|OPEN},V2=%(\$1VALVE2:RAW.A){CLOSED|OPEN},V3=%(\$1VALVE3:RAW.A){CLOSED|OPEN},V4=%(\$1VALVE4:RAW.A){CLOSED|OPEN},V5=%(\$1VALVE5:RAW.A){CLOSED|OPEN},V6=%(\$1VALVE6:RAW.A){CLOSED|OPEN},V7=%(\$1VALVE7:RAW.A){CLOSED|OPEN},V8=%(\$1VALVE8:RAW.A){CLOSED|OPEN},V9=%(\$1VALVE9:RAW.A){CLOSED|OPEN},V10=%(\$1VALVE10:RAW.A){CLOSED|OPEN}";
+}
+
+setValve {
+	out "V\$1=%b";
+	in "OK";
+}
+
+setSolenoidValve {
+	out "SV\$1=%b";
+	in "OK";
+}
+
+getProportionalValves {
+	out "PV?";
+	in "PV1=%f,PV2=%(\$1PROPORTIONAL_VALVE2:RAW.A)f,NV=%(\$1NEEDLE_VALVE:RAW.A)f,PV4=%(\$1PROPORTIONAL_VALVE4:RAW.A)f";
+}
+
+setProportionalValve {
+	out "PV\$1=%f";
+	in "OK";
+}
+
+setNeedleValve {
+	out "NV=%f";
+	in "OK";
+}
+
+get1KStage {
+	out "CRYO?";
+	in "CRYO=%f";
+}
+
+getMcTemp {
+	out "MC?";
+	in "MC=%f";
+}
+
+getMCResistance {
+	out "MC-R?";
+	in "MC-R=%f";
+}
+
+skip {
+	out "SKIP";
+	in "OK";
+}
+
+stop {
+	out "STOP";
+	in "OK";
+}
+
+condense {
+	out "CONDENSE";
+	in "OK";
+}
+
+circulate {
+	out "CIRCULATE";
+	in "OK";
+}
+
+condenseAndCirculate {
+	out "CONDENSE";
+	in "OK";
+
+	out "CIRCULATE";
+	in "OK";
+}
+
+setTempControl {
+	out "TSET=%f";
+	in "OK";
+}
+
+getTempControl {
+	out "TSET?";
+	in "TSET=%f";
+}
+
+makeSafe {
+	out "MAKE SAFE";
+	in "OK";
+}
+
+warmUp {
+	out "WARM UP";
+	in "OK";
+}
+
+getInfo {
+    out "INFO?";
+	ExtraInput = Ignore;  # If we get more than 512 chars in response, discard the excess and do not throw an error.
+	in "%512c";
+}
+
+getState {
+	out "STATE?";
+	in "%#s";
+}
+
+setNVMode {
+	out "NVMODE=%{MANUAL|AUTO}";
+	in "OK";
+}
+
+getNVMode {
+	out "NVMODE?";
+	in "%{MANUAL|AUTO}";
+}
+
+set1KPump {
+	out "1KPUMP=%b";
+	in "OK";
+}
+
+getPumps {
+	out "PUMPS?";
+	in "1KPUMP=%{OFF|ON},HE3PUMP=%(\$1HE3:PUMP:RAW.A){OFF|ON},ROOTS=%(\$1ROOTS:RAW.A){OFF|ON}";
+}
+
+setHe3Pump {
+	out "HE3PUMP=%b";
+	in "OK";
+}
+
+setRootsPump {
+	out "ROOTS=%b";
+	in "OK";
+}

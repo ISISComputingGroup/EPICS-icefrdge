@@ -1,0 +1,7 @@
+file loop.template { 
+  pattern 
+    {P, PORT, LOOP_NUM}
+    
+    {"\$(P)", "\$(PORT)", "1"}
+    {"\$(P)", "\$(PORT)", "2"}
+}

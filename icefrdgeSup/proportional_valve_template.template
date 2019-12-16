@@ -1,0 +1,44 @@
+record(ai, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM)")
+{
+	field(DESC, "Proportional valve $(VALVE_NUM)")
+	field(EGU, "")
+	field(PREC, "1")
+
+	# The mimic valve pvs are updated using record redirection, so only one of the 10 PVs need a SCAN, INP and DTYP field.
+	# Therefore, the macro is needed so when the valve num is not one, these fields will be commented out.
+	$(IF_ONE) field(DTYP, "stream")
+	$(IF_ONE) field(INP, "@icefrdge.proto getProportionalValves($(P)) $(PORT)")
+	$(IF_ONE) field(SCAN, "5 second")
+	
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM):SP")
+{
+	field(DESC, "Proportional valve $(VALVE_NUM) setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setProportionalValve($(VALVE_NUM)) $(PORT)")
+	field(EGU, "")
+	field(PREC, "1")
+
+	field(DRVL, "0")
+	field(DRVH, "100")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)PROPORTIONAL_VALVE1")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(calc, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM):_CALC")
+{
+	field(DESC, "Calc to check if PV is 0 or greater")
+	field(INPA, "$(P)PROPORTIONAL_VALVE$(VALVE_NUM) CP MS")
+	field(CALC, "(A < 0.00001) ? 0 : 1")
+}

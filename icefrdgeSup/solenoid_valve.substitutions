@@ -1,0 +1,14 @@
+file solenoid_valve_template.template { 
+  pattern 
+    {P, PORT, VALVE_NUM}
+    
+    {"\$(P)", "\$(PORT)", "1"}
+    {"\$(P)", "\$(PORT)", "2"}
+}
+
+file $(UTILITIES)/db/error_setter.template {
+    pattern {P, STREAM_PV, PV_NAME}
+
+    {"\$(P)", "VALVE1", "SOLENOID_VALVE1"}
+    {"\$(P)", "VALVE1", "SOLENOID_VALVE2"}
+}

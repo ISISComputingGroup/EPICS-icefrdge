@@ -1,0 +1,16 @@
+file proportional_valve_template.template { 
+  pattern 
+    {P, PORT, VALVE_NUM, IF_ONE}
+    
+    {"\$(P)", "\$(PORT)", "1", ""}
+    {"\$(P)", "\$(PORT)", "2", "#"}
+    {"\$(P)", "\$(PORT)", "4", "#"}
+}
+
+file $(UTILITIES)/db/error_setter.template {
+    pattern {P, STREAM_PV, PV_NAME}
+
+    {"\$(P)", "PROPORTIONAL_VALVE1", "PROPORTIONAL_VALVE2"}
+    {"\$(P)", "PROPORTIONAL_VALVE1", "PROPORTIONAL_VALVE4"}
+    {"\$(P)", "PROPORTIONAL_VALVE1", "NEEDLE_VALVE"}
+}

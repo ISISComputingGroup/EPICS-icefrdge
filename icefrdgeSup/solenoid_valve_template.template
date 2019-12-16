@@ -1,0 +1,29 @@
+record(bi, "$(P)SOLENOID_VALVE$(VALVE_NUM)")
+{
+	field(DESC, "Solenoid valve $(VALVE_NUM) status")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "CLOSED")
+	field(ONAM, "OPEN")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)SOLENOID_VALVE$(VALVE_NUM):SP")
+{
+	field(DESC, "Solenoid valve $(VALVE_NUM) setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setSolenoidValve($(VALVE_NUM)) $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)VALVE1")
+
+	field(ZNAM, "CLOSED")
+	field(ONAM, "OPEN")
+
+	info(archive, "VAL")
+	
+}

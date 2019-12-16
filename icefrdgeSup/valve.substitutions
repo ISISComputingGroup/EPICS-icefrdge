@@ -1,0 +1,29 @@
+file valve_template.template { 
+  pattern 
+    {P, PORT, VALVE_NUM, IF_ONE}
+    
+    {"\$(P)", "\$(PORT)", "1", ""}
+    {"\$(P)", "\$(PORT)", "2", "#"}
+    {"\$(P)", "\$(PORT)", "3", "#"}
+    {"\$(P)", "\$(PORT)", "4", "#"}
+    {"\$(P)", "\$(PORT)", "5", "#"}
+    {"\$(P)", "\$(PORT)", "6", "#"}
+    {"\$(P)", "\$(PORT)", "7", "#"}
+    {"\$(P)", "\$(PORT)", "8", "#"}
+    {"\$(P)", "\$(PORT)", "9", "#"}
+    {"\$(P)", "\$(PORT)", "10", "#"}
+}
+
+file $(UTILITIES)/db/error_setter.template {
+    pattern {P, STREAM_PV, PV_NAME}
+
+    {"\$(P)", "VALVE1", "VALVE2"}
+    {"\$(P)", "VALVE1", "VALVE3"}
+    {"\$(P)", "VALVE1", "VALVE4"}
+    {"\$(P)", "VALVE1", "VALVE5"}
+    {"\$(P)", "VALVE1", "VALVE6"}
+    {"\$(P)", "VALVE1", "VALVE7"}
+    {"\$(P)", "VALVE1", "VALVE8"}
+    {"\$(P)", "VALVE1", "VALVE9"}
+    {"\$(P)", "VALVE1", "VALVE10"}
+}

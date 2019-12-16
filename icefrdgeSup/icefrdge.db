@@ -1,0 +1,1057 @@
+record(bo, "$(P)SIM") 
+{
+	field(DESC, "For the recsim")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+	field(VAL, "$(RECSIM=0)")	
+}
+
+record(bo, "$(P)DISABLE")
+{
+    field(DESC, "Disable comms")
+    field(PINI, "YES")
+    field(VAL, "$(DISABLE=0)")
+    field(OMSL, "supervisory")
+    field(ZNAM, "COMMS ENABLED")
+    field(ONAM, "COMMS DISABLED")
+}
+
+record(ai, "$(P)VTI:TEMP1")
+{
+	field(DESC, "VTI temperature 1")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getCryoTemps($(P)) $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "3")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:TEMP2")
+{
+	field(DESC, "VTI temperature 2")
+	field(EGU, "K")
+	field(PREC, "3")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:TEMP3")
+{
+	field(DESC, "VTI temperature 3")
+	field(EGU, "K")
+	field(PREC, "3")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:TEMP4")
+{
+	field(DESC, "VTI temperature 4")
+	field(EGU, "K")
+	field(PREC, "3")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:CERNOX")
+{
+	field(DESC, "value of the Lakeshore MC Cernox")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCCernox $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "3")
+
+	field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:RUO")
+{
+	field(DESC, "value of the Lakeshore MC RuO")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCRuO $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "3")
+
+	field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:STILL:TEMP")
+{
+	field(DESC, "value of Lakeshore still temperature")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCStillTemp $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "5")
+
+	field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
+}
+
+record(ao, "$(P)LS:MC:TEMP:SP")
+{
+	field(DESC, "Lakshore MC temperature setpoint")
+	field(OUT, "$(P)LS:MC:TEMP:SP:_IS_ZERO.A PP")
+	field(EGU, "K")
+	field(PREC, "3")
+
+	field(DRVL, "0")
+	field(DRVH, "300")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:TEMP:SP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(calc, "$(P)LS:MC:TEMP:SP:_IS_ZERO")
+{
+	field(DESC, "Calculation to check if MC temp is 0")
+	field(CALC, "(A < 0.00001) ? 1 : 2")
+	field(FLNK, "$(P)LS:MC:TEMP:SP:_FAN")
+}
+
+record(dfanout, "$(P)LS:MC:TEMP:SP:_FAN")
+{
+	field(DESC, "processes pv if mc temp is zero or not")
+	field(DOL, "$(P)LS:MC:TEMP:SP")
+	field(OMSL, "closed_loop")
+	field(SELL, "$(P)LS:MC:TEMP:SP:_IS_ZERO")
+	field(SELM, "Specified")
+	field(OUTA, "$(P)LS:MC:TEMP:SP:_IF_ZERO PP")
+	field(OUTB, "$(P)LS:MC:TEMP:SP:_IF_NOT_ZERO PP")
+}
+
+record(ao, "$(P)LS:MC:TEMP:SP:_IF_ZERO")
+{
+	field(DESC, "sends correct msgs in case mc temp zero")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setLakeshoreMCTempSetIfZero $(PORT)")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+}
+
+record(ao, "$(P)LS:MC:TEMP:SP:_IF_NOT_ZERO")
+{
+	field(DESC, "correct msgs in case mc temp not zero")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setLakeshoreMCTempSetIfNotZero $(PORT)")
+	field(EGU, "K")
+	field(SDIS, "$(P)DISABLE")
+}
+
+record(ai, "$(P)LS:MC:TEMP")
+{
+	field(DESC, "mixing chamber temp setpoint indicator")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getLakeshoreMCTempSetpoint $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:TEMP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)LS:MC:P:SP")
+{
+	field(DESC, "Lakeshore mc proportional setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMCProportional($(P)) $(PORT)")
+	field(EGU, "")
+	field(PREC, "3")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:MC:P")
+
+    field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:P:SP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)LS:MC:I:SP")
+{
+	field(DESC, "Lakeshore mc integral setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMCIntegral($(P)) $(PORT)")
+	field(EGU, "")
+	field(PREC, "3")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:MC:I")
+
+    field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)LS:MC:D:SP")
+{
+	field(DESC, "Lakeshore mc derivative setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMCDerivative($(P)) $(PORT)")
+	field(EGU, "")
+	field(PREC, "3")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:MC:D")
+
+    field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:P")
+{
+	field(DESC, "Lakeshore mixing chamber proportional")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCPIDs($(P)) $(PORT)")
+	field(SCAN, "10 second")
+	field(EGU, "")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:P")
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:I")
+{
+	field(DESC, "Lakeshore mixing chamber integral")
+	field(EGU, "")
+	field(PREC, "3")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:D")
+{
+	field(DESC, "Lakeshore mixing chamber derivative")
+	field(EGU, "")
+	field(PREC, "3")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(mbbo, "$(P)LS:MC:HTR:RANGE:SP")
+{
+	field(DESC, "Lakeshore mc heater range setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setMCHeaterRange $(PORT)")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:MC:HTR:RANGE")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:MC:HTR:RANGE:SP")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+	field(THVL, "3")
+	field(FRVL, "4")
+	field(FVVL, "5")
+	field(SXVL, "6")
+	field(SVVL, "7")
+	field(EIVL, "8")
+
+	field(ZRST, "Off")
+	field(ONST, "31.6 uA")
+	field(TWST, "100 uA")
+	field(THST, "316 uA")
+	field(FRST, "1.00 mA")
+	field(FVST, "3.16 mA")
+	field(SXST, "10 mA")
+	field(SVST, "31.6 mA")
+	field(EIST, "100 mA")
+
+	info(archive, "VAL")
+}
+
+record(mbbi, "$(P)LS:MC:HTR:RANGE")
+{
+	field(DESC, "Lakeshore mixing chamber heater range")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCHeaterRange $(PORT)")
+	field(SCAN, "10 second")
+
+	field(SIML, "$(P)SIM")
+	field(SIOL, "$(P)SIM:LS:MC:HTR:RANGE")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+	field(THVL, "3")
+	field(FRVL, "4")
+	field(FVVL, "5")
+	field(SXVL, "6")
+	field(SVVL, "7")
+	field(EIVL, "8")
+
+	field(ZRST, "Off")
+	field(ONST, "31.6 uA")
+	field(TWST, "100 uA")
+	field(THST, "316 uA")
+	field(FRST, "1.00 mA")
+	field(FVST, "3.16 mA")
+	field(SXST, "10 mA")
+	field(SVST, "31.6 mA")
+	field(EIST, "100 mA")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:MC:HTR:PERCENT")
+{
+	field(DESC, "Lakeshore MC heater power percentage")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCHeaterPercentage $(PORT)")
+	field(SCAN, "10 second")
+	field(EGU, "%")
+	field(PREC, "3")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:STILL")
+{
+	field(DESC, "Lakeshore still output")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getStillOutput $(PORT)")
+	field(SCAN, "10 second")
+	field(EGU, "%")
+	field(PREC, "3")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(mbbo, "$(P)LS:VLTG:RANGE:SP")
+{
+	field(DESC, "Lakeshore voltage range setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setExcVoltageRange($(P)) $(PORT)")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:VLTG:RANGE:SP")
+	field(SDIS, "$(P)DISABLE")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)LS:VLTG:RANGE:CH5")
+	
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
+	field(NIVL, "10")
+	field(TEVL, "11")
+	field(ELVL, "12")
+
+	field(ZRST, "2.00 uV")
+	field(ONST, "6.32 uV")
+	field(TWST, "20 uV")
+	field(THST, "63.2 uV")
+	field(FRST, "200 uV")
+	field(FVST, "632 uV")
+	field(SXST, "2.00 mV")
+	field(SVST, "6.32 mV")
+	field(EIST, "20.0 mV")
+	field(NIST, "63.2 mV")
+	field(TEST, "200 mV")
+	field(ELST, "632 mV")
+
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)LS:_VLTG:RANGE:RESISTANCE:RANGE")
+{
+	field(DESC, "resistance range for setting vltg range")
+	field(EGU, "")
+}
+
+record(ai, "$(P)LS:_VLTG:RANGE:AUTORANGE")
+{
+	field(DESC, "autorange mode for setting vltg range")
+	field(EGU, "")
+}
+
+record(ai, "$(P)LS:_VLTG:RANGE:CSOFF")
+{
+	field(DESC, "excitation mode for setting vltg range")
+	field(EGU, "")
+}
+
+record(mbbi, "$(P)LS:VLTG:RANGE:CH5")
+{
+	field(DESC, "Lakeshore channel 5 vltg range")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getCh5ExcVoltageRange $(PORT)")
+	field(SCAN, "10 second")
+
+	# Scan of readback is not frequent, and we can not have two forward links in a record, so when the setpoint 
+	# is set this is processed, and then CH6 is also processed.
+	field(FLNK, "$(P)LS:VLTG:RANGE:CH6")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:VLTG:RANGE:CH5")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
+	field(NIVL, "10")
+	field(TEVL, "11")
+	field(ELVL, "12")
+
+	field(ZRST, "2.00 uV")
+	field(ONST, "6.32 uV")
+	field(TWST, "20 uV")
+	field(THST, "63.2 uV")
+	field(FRST, "200 uV")
+	field(FVST, "632 uV")
+	field(SXST, "2.00 mV")
+	field(SVST, "6.32 mV")
+	field(EIST, "20.0 mV")
+	field(NIST, "63.2 mV")
+	field(TEST, "200 mV")
+	field(ELST, "632 mV")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(mbbi, "$(P)LS:VLTG:RANGE:CH6")
+{
+	field(DESC, "Lakeshore channel 6 vltg range")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getCh6ExcVoltageRange $(PORT)")
+	field(SCAN, "10 second")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:LS:VLTG:RANGE:CH6")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "1")
+	field(ONVL, "2")
+	field(TWVL, "3")
+	field(THVL, "4")
+	field(FRVL, "5")
+	field(FVVL, "6")
+	field(SXVL, "7")
+	field(SVVL, "8")
+	field(EIVL, "9")
+	field(NIVL, "10")
+	field(TEVL, "11")
+	field(ELVL, "12")
+
+	field(ZRST, "2.00 uV")
+	field(ONST, "6.32 uV")
+	field(TWST, "20 uV")
+	field(THST, "63.2 uV")
+	field(FRST, "200 uV")
+	field(FVST, "632 uV")
+	field(SXST, "2.00 mV")
+	field(SVST, "6.32 mV")
+	field(EIST, "20.0 mV")
+	field(NIST, "63.2 mV")
+	field(TEST, "200 mV")
+	field(ELST, "632 mV")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)PRESSURE1")
+{
+	field(DESC, "Pressure 1")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getPressures($(P)) $(PORT)")
+	field(SCAN, "5 second")
+	field(EGU, "Pa")
+	field(PREC, "2")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)PRESSURE2")
+{
+	field(DESC, "Pressure 2")
+	field(EGU, "Pa")
+	field(PREC, "2")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)PRESSURE3")
+{
+	field(DESC, "Pressure 3")
+	field(EGU, "Pa")
+	field(PREC, "2")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)PRESSURE4")
+{
+	field(DESC, "Pressure 4")
+	field(EGU, "Pa")
+	field(PREC, "2")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)NEEDLE_VALVE")
+{
+	field(DESC, "Needle valve")
+	field(EGU, "")
+	field(PREC, "1")
+
+	# The needle and proportional valve pvs are updated using record redirection, so only proportional 
+	# valve 1 needs a SCAN, INP and DTYP field.
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)NEEDLE_VALVE:SP")
+{
+	field(DESC, "Needle valve setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setNeedleValve $(PORT)")
+	field(EGU, "")
+	field(PREC, "1")
+
+	field(DRVL, "0")
+	field(DRVH, "100")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)PROPORTIONAL_VALVE1")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(calc, "$(P)NEEDLE_VALVE:_CALC")
+{
+	field(DESC, "Calc to check if NV is 0 or greater")
+	field(INPA, "$(P)NEEDLE_VALVE CP MS")
+	field(CALC, "(A < 0.00001) ? 0 : 1")
+}
+
+record(ai, "$(P)1K:TEMP")
+{
+	field(DESC, "1K stage temperature")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto get1KStage $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "5")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
+}
+
+record(ai, "$(P)MC:TEMP")
+{
+	field(DESC, "Mixing Chamber temperature")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCTemp $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(FLNK, "$(P)MC:USER")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MC:RESISTANCE")
+{
+	field(DESC, "Mixing Chamber resistance")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getMCResistance $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "mohm")
+	field(FLNK, "$(P)MC:USER")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(calc, "$(P)MC:USER")
+{
+	field(DESC, "Mixing chamber readback for user")
+	field(INPA, "$(P)MC:TEMP MS")
+	field(INPB, "$(P)MC:RESISTANCE MS")
+	field(CALC, "(A < 0.051?B:A)")
+	field(EGU, "K")
+	field(PREC, "5")
+
+	field(SDIS, "$(P)DISABLE")
+	field(ASG, "READONLY")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
+}
+
+record(mbbo, "$(P)MIMIC:MODE:SP")
+{
+	field(DESC, "Mimic panel mode setpoint")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+
+	field(ZRST, "MANUAL")
+	field(ONST, "SEMI AUTOMATIC")
+	field(TWST, "AUTOMATIC")
+
+	info(archive, "VAL")
+}
+
+record(calcout, "$(P)MIMIC:MODE:SP:_CALC") 
+{
+	field(DESC, "sets disable bit based on mode")
+	field(INPA, "$(P)MIMIC:MODE:SP CP MS")
+	field(CALC, "A=1?0:1")
+	field(OUT, "$(P)MIMIC:MODE:SP:_FAN PP")
+}
+
+record(dfanout, "$(P)MIMIC:MODE:SP:_FAN") 
+{
+	field(DESC, "disables/enables mimic buttons")
+	field(OUTA, "$(P)MIMIC:START:SP.DISP")
+    field(OUTB, "$(P)MIMIC:STOP:SP.DISP")
+    field(OUTC, "$(P)MIMIC:SKIP:SP.DISP")
+}
+
+record(bo, "$(P)MIMIC:SKIP:SP") 
+{
+	field(DESC, "Mimic panel Skip setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto skip $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "SKIP")
+	field(ONAM, "SKIP")
+}
+
+record(bo, "$(P)MIMIC:STOP:SP") 
+{
+	field(DESC, "Mimic panel Stop setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto stop $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "STOP")
+	field(ONAM, "STOP")
+}
+
+record(bo, "$(P)MIMIC:START:SP") 
+{
+	field(DESC, "Mimic panel Start setpoint")
+	field(SDIS, "$(P)DISABLE")
+
+	field(FLNK, "$(P)MIMIC:SEQUENCE:_CALC")
+
+	field(ZNAM, "START")
+	field(ONAM, "START")
+}
+
+record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
+{
+	field(DESC, "Mimic panel Sequence setpoint")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+	field(THVL, "3")
+	field(FRVL, "4")
+	field(FVVL, "5")
+
+	field(ZRST, "Condense")
+	field(ONST, "Circulate")
+	field(TWST, "Condense & Circulate")
+	field(THST, "Temperature Control")
+	field(FRST, "Make Safe")
+	field(FVST, "Warm Up")
+
+	info(archive, "VAL")
+}
+
+record(calc, "$(P)MIMIC:SEQUENCE:_CALC")
+{
+	field(INPA, "$(P)MIMIC:SEQUENCE:SP MS")
+	field(CALC, "A+1")
+	field(FLNK, "$(P)MIMIC:SEQUENCE:_FAN")
+}
+
+record(fanout, "$(P)MIMIC:SEQUENCE:_FAN")
+{
+	field(DESC, "processes correct pv for given mode")
+	field(SELL, "$(P)MIMIC:SEQUENCE:_CALC")
+	field(SELM, "Specified")
+	field(LNK1, "$(P)MIMIC:SEQUENCE:_CONDENSE")
+	field(LNK2, "$(P)MIMIC:SEQUENCE:_CIRCULATE")
+	field(LNK3, "$(P)MIMIC:SEQUENCE:_CIRC_AND_COND")
+	field(LNK4, "$(P)MIMIC:SEQUENCE:_TEMP_CONTROL")
+	field(LNK5, "$(P)MIMIC:SEQUENCE:_MAKESAFE")
+	field(LNK6, "$(P)MIMIC:SEQUENCE:_WARMUP")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_CONDENSE")
+{
+	field(DESC, "Mimic panel Sequence condense sp")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto condense $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_CIRCULATE")
+{
+	field(DESC, "Mimic panel Sequence circulate")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto circulate $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_CIRC_AND_COND")
+{
+	field(DESC, "Mimic condense & circulate")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto condenseAndCirculate $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+}
+
+record(ao, "$(P)MIMIC:SEQUENCE:_TEMP_CONTROL")
+{
+	field(DESC, "Mimic temperature control")
+	field(DOL, "$(P)MIMIC:SEQUENCE:TEMP:SP")
+	field(OMSL, "closed_loop")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setTempControl $(PORT)")
+
+	field(SDIS, "$(P)DISABLE")
+}
+
+record(ao, "$(P)MIMIC:SEQUENCE:TEMP:SP")
+{
+	field(DESC, "Mimic panel Sequence temp setpoint")
+	field(EGU, "K")
+
+	field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)MIMIC:SEQUENCE:TEMP")
+{
+	field(DESC, "Mimic panel Sequence temp")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getTempControl $(PORT)")
+	field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "3")
+
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_MAKESAFE")
+{
+	field(DESC, "Mimic panel Sequence make safe")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto makeSafe $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+}
+
+record(bo, "$(P)MIMIC:SEQUENCE:_WARMUP")
+{
+	field(DESC, "Mimic panel Sequence warm up")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto warmUp $(PORT)")
+	field(SDIS, "$(P)DISABLE")
+}
+
+record(waveform, "$(P)MIMIC:INFO")
+{
+    field(DESC, "Mimic panel info display")
+	field(DTYP, "stream")
+    field(NELM, "512")
+    field(FTVL, "CHAR")
+    field(INP, "@icefrdge.proto getInfo $(PORT)")
+    field(SCAN, "1 second")
+	
+	info(INTEREST, "MEDIUM")
+	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
+	
+    field(SDIS, "$(P)DISABLE")
+}
+
+record(stringin, "$(P)STATE")
+{
+    field(DESC, "Device state")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getState $(PORT)")
+    field(SCAN, "1 second")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
+	
+    field(SDIS, "$(P)DISABLE")
+}
+
+record(bo, "$(P)NVMODE:SP") 
+{
+	field(DESC, "Needle valve mode auto/manual sp")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setNVMode $(PORT)")
+
+	field(FLNK, "$(P)NVMODE")
+
+	field(ZNAM, "MANUAL")
+	field(ONAM, "AUTO")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:NVMODE:SP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)NVMODE") 
+{
+	field(DESC, "Needle valve mode auto/manual")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getNVMode $(PORT)")
+	field(SCAN, "10 second")
+
+	field(ZNAM, "MANUAL")
+	field(ONAM, "AUTO")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:NVMODE")
+    field(SDIS, "$(P)DISABLE")
+
+    info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)1K:PUMP:SP") 
+{
+	field(DESC, "1K pump on/off setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto set1KPump $(PORT)")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	field(FLNK, "$(P)1K:PUMP")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:1K:PUMP:SP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)1K:PUMP") 
+{
+	field(DESC, "1K pump on/off")
+	field(DTYP, "stream")
+	field(INP, "@icefrdge.proto getPumps($(P)) $(PORT)")
+	field(SCAN, "5 second")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:1K:PUMP")
+    field(SDIS, "$(P)DISABLE")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)HE3:PUMP:SP") 
+{
+	field(DESC, "Helium 3 pump on/off setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setHe3Pump $(PORT)")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	field(SDIS, "$(P)DISABLE")
+	field(FLNK, "$(P)1K:PUMP")
+
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)HE3:PUMP") 
+{
+	field(DESC, "Helium 3 pump on/off")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(bo, "$(P)ROOTS:SP") 
+{
+	field(DESC, "Roots pump on/off setpoint")
+	field(DTYP, "stream")
+	field(OUT, "@icefrdge.proto setRootsPump $(PORT)")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	field(SDIS, "$(P)DISABLE")
+	field(FLNK, "$(P)1K:PUMP")
+
+	info(archive, "VAL")
+}
+
+record(bi, "$(P)ROOTS") 
+{
+	field(DESC, "Roots pump on/off")
+	field(SDIS, "$(P)DISABLE")
+
+	field(ZNAM, "OFF")
+	field(ONAM, "ON")
+
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+#
+# Simulation records
+#
+
+record(ao, "$(P)SIM:LS:MC:TEMP:SP") {
+	
+}
+
+alias("$(P)SIM:LS:MC:TEMP:SP", "$(P)SIM:LS:MC:TEMP")
+
+record(ao, "$(P)SIM:LS:MC:P:SP") {
+	
+}
+
+alias("$(P)SIM:LS:MC:P:SP", "$(P)SIM:LS:MC:P")
+
+record(mbbo, "$(P)SIM:LS:MC:HTR:RANGE:SP") {
+	
+}
+
+alias("$(P)SIM:LS:MC:HTR:RANGE:SP", "$(P)SIM:LS:MC:HTR:RANGE")
+
+record(mbbo, "$(P)SIM:LS:VLTG:RANGE:SP") {
+	
+}
+
+alias("$(P)SIM:LS:VLTG:RANGE:SP", "$(P)SIM:LS:VLTG:RANGE:CH5")
+alias("$(P)SIM:LS:VLTG:RANGE:SP", "$(P)SIM:LS:VLTG:RANGE:CH6")
+
+record(bo, "$(P)SIM:NVMODE:SP") {
+	
+}
+
+alias("$(P)SIM:NVMODE:SP", "$(P)SIM:NVMODE")
+
+record(bo, "$(P)SIM:1K:PUMP:SP") {
+	
+}
+
+alias("$(P)SIM:1K:PUMP:SP", "$(P)SIM:1K:PUMP")

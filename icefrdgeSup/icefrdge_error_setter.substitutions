@@ -1,0 +1,17 @@
+file $(UTILITIES)/db/error_setter.template {
+    pattern {P, STREAM_PV, PV_NAME}
+
+    {"\$(P)", "VTI:TEMP1", "VTI:TEMP2"}
+    {"\$(P)", "VTI:TEMP1", "VTI:TEMP3"}
+    {"\$(P)", "VTI:TEMP1", "VTI:TEMP4"}
+
+    {"\$(P)", "LS:MC:P", "LS:MC:I"}
+    {"\$(P)", "LS:MC:P", "LS:MC:D"}
+
+    {"\$(P)", "PRESSURE1", "PRESSURE2"}
+    {"\$(P)", "PRESSURE1", "PRESSURE3"}
+    {"\$(P)", "PRESSURE1", "PRESSURE4"}
+
+    {"\$(P)", "1K:PUMP", "HE3:PUMP"}
+    {"\$(P)", "1K:PUMP", "ROOTS"}
+}

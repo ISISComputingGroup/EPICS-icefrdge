@@ -1,0 +1,205 @@
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):TSET:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) temperature setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopTempPoint($(LOOP_NUM)) $(PORT)")
+	field(EGU, "K")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):TSET")
+{
+	field(DESC, "Loop $(LOOP_NUM) temperature setpoint readback")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopTempPoint($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "1 second")
+	field(EGU, "K")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):P:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) proportional setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopProportional($(LOOP_NUM)) $(PORT)")
+	field(EGU, "")
+	field(PREC, "3")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)VTI:LOOP$(LOOP_NUM):P")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):P:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):P")
+{
+	field(DESC, "Loop $(LOOP_NUM) proportional value")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopProportional($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "10 second")
+	field(EGU, "")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):P")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):I:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) integral setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopIntegral($(LOOP_NUM)) $(PORT)")
+	field(EGU, "")
+	field(PREC, "3")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)VTI:LOOP$(LOOP_NUM):I")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):I:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):I")
+{
+	field(DESC, "Loop $(LOOP_NUM) integral value")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopIntegral($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "10 second")
+	field(EGU, "")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):I")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):D:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) derivative setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopDerivative($(LOOP_NUM)) $(PORT)")
+	field(EGU, "")
+	field(PREC, "3")
+
+	# Scan of readback is not frequent, so we process the readback after we set 
+	# the setpoint to update it instantly
+	field(FLNK, "$(P)VTI:LOOP$(LOOP_NUM):D")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):D")
+{
+	field(DESC, "Loop $(LOOP_NUM) derivative value")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopDerivative($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "10 second")
+	field(EGU, "")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+record(ao, "$(P)VTI:LOOP$(LOOP_NUM):RAMPRATE:SP")
+{
+	field(DESC, "Loop $(LOOP_NUM) ramp rate setpoint")
+	field(DTYP, "stream")
+    field(OUT, "@icefrdge.proto setLoopRampRate($(LOOP_NUM)) $(PORT)")
+	field(EGU, "K/min")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE:SP")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(archive, "VAL")
+}
+
+record(ai, "$(P)VTI:LOOP$(LOOP_NUM):RAMPRATE")
+{
+	field(DESC, "Loop $(LOOP_NUM) ramp rate")
+	field(DTYP, "stream")
+    field(INP, "@icefrdge.proto getLoopRampRate($(LOOP_NUM)) $(PORT)")
+    field(SCAN, "1 second")
+	field(EGU, "K/min")
+	field(PREC, "3")
+
+	field(SIML, "$(P)SIM")
+    field(SIOL, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE")
+    field(SDIS, "$(P)DISABLE")
+	
+	info(INTEREST, "HIGH")
+	info(archive, "VAL")
+}
+
+#
+# Simulation records
+#
+
+record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):TSET")
+
+record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):P:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):P:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):P")
+
+record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):I:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):I:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):I")
+
+record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):D:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):D")
+
+record(ao, "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE:SP") {
+	
+}
+
+alias("$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE:SP", "$(P)SIM:VTI:LOOP$(LOOP_NUM):RAMPRATE")
