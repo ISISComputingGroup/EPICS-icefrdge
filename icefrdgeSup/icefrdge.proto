@@ -72,24 +72,24 @@ getMCStillTemp {
 
 setLakeshoreMCTempSetIfZero {
 	out "LS-DIRECT-SET=SETP %f";
-	in "Set LakeShore 370";
+	in "OK";
 
 	out "LS-DIRECT-SET=SCAN 6,1";
-	in "Set LakeShore 370";
+	in "OK";
 
 	out "LS-DIRECT-SET=CMODE 4";
-	in "Set LakeShore 370";
+	in "OK";
 }
 
 setLakeshoreMCTempSetIfNotZero {
 	out "LS-DIRECT-SET=SETP %f";
-	in "Set LakeShore 370";
+	in "OK";
 
 	out "LS-DIRECT-SET=SCAN 6,0";
-	in "Set LakeShore 370";
+	in "OK";
 
 	out "LS-DIRECT-SET=CMODE 1";
-	in "Set LakeShore 370";
+	in "OK";
 }
 
 getLakeshoreMCTempSetpoint {
@@ -102,7 +102,7 @@ setMCProportional {
 	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
 	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
-	in "Set LakeShore 370";
+	in "OK";
 }
 
 setMCIntegral {
@@ -110,7 +110,7 @@ setMCIntegral {
 	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
 	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%f,%(\$1LS:MC:D:RAW.A)f";
-	in "Set LakeShore 370";
+	in "OK";
 }
 
 setMCDerivative {
@@ -118,7 +118,7 @@ setMCDerivative {
 	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
 
 	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%f";
-	in "Set LakeShore 370";
+	in "OK";
 }
 
 getMCPIDs {
@@ -128,10 +128,10 @@ getMCPIDs {
 
 setMCHeaterRange {
 	out "LS-DIRECT-SET=CSET 06,0,1,025,1,%{0|1|2|3|4|5|6|7|8},+388.000";
-	in "Set LakeShore 370";
+	in "OK";
 
 	out "LS-DIRECT-SET=HTRRNG %{0|1|2|3|4|5|6|7|8}";
-	in "Set LakeShore 370";
+	in "OK";
 }
 
 getMcHeaterRange {
@@ -154,13 +154,13 @@ setExcVoltageRange {
 	in "%*d,%*2d,%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
 
 	out "LS-DIRECT-SET=RDGRNG 05,0,%{01|02|03|04|05|06|07|08|09|10|11|12},%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
-	in "Set LakeShore 370";
+	in "OK";
 
 	out "LS-DIRECT-READ=RDGRNG? 6";
 	in "%*d,%*2d,%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
 
 	out "LS-DIRECT-SET=RDGRNG 06,0,%{01|02|03|04|05|06|07|08|09|10|11|12},%(\$1LS:_VLTG:RANGE:RESISTANCE:RANGE)02d,%(\$1LS:_VLTG:RANGE:AUTORANGE)d,%(\$1LS:_VLTG:RANGE:CSOFF)d";
-	in "Set LakeShore 370";
+	in "OK";
 }
 
 getCh5ExcVoltageRange {
