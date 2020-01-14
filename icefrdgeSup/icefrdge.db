@@ -643,7 +643,7 @@ record(ai, "$(P)MC:TEMP")
 	info(alarm, "ICEFRDGE")
 }
 
-record(ai, "$(P)MC:RESISTANCE")
+record(ai, "$(P)MC:_RESISTANCE")
 {
 	field(DESC, "Mixing Chamber resistance")
 	field(DTYP, "stream")
@@ -659,7 +659,7 @@ record(ai, "$(P)MC:RESISTANCE")
 record(calc, "$(P)MC:RESISTANCE:CALC")
 {
 	field(DESC, "MC resistance readback for user")
-	field(INPA, "$(P)MC:RESISTANCE CP MS")
+	field(INPA, "$(P)MC:_RESISTANCE CP MS")
 	field(CALC, "A/1000")
 	field(PREC, "5")
 	field(EGU, "kohm")
