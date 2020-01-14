@@ -572,7 +572,7 @@ record(ai, "$(P)PRESSURE4")
 record(ai, "$(P)NEEDLE_VALVE")
 {
 	field(DESC, "Needle valve")
-	field(EGU, "")
+	field(EGU, "%")
 	field(PREC, "1")
 
 	# The needle and proportional valve pvs are updated using record redirection, so only proportional 
@@ -589,7 +589,7 @@ record(ao, "$(P)NEEDLE_VALVE:SP")
 	field(DESC, "Needle valve setpoint")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setNeedleValve $(PORT)")
-	field(EGU, "")
+	field(EGU, "%")
 	field(PREC, "1")
 
 	field(DRVL, "0")
