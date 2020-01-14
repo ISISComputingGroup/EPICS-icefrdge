@@ -653,7 +653,7 @@ record(ai, "$(P)MC:RESISTANCE")
 	field(DTYP, "stream")
 	field(INP, "@icefrdge.proto getMCResistance $(PORT)")
 	field(SCAN, "1 second")
-	field(EGU, "mohm")
+	field(EGU, "kohm")
 	field(PREC, "5")
 
 	field(SDIS, "$(P)DISABLE")
