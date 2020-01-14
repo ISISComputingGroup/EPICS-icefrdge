@@ -638,11 +638,13 @@ record(ai, "$(P)MC:TEMP")
 	field(INP, "@icefrdge.proto getMCTemp $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "K")
-	field(FLNK, "$(P)MC:USER")
+	field(PREC, "5")
 
 	field(SDIS, "$(P)DISABLE")
 
+	info(INTEREST, "HIGH")
 	info(archive, "VAL")
+	info(alarm, "ICEFRDGE")
 }
 
 record(ai, "$(P)MC:RESISTANCE")
@@ -652,24 +654,9 @@ record(ai, "$(P)MC:RESISTANCE")
 	field(INP, "@icefrdge.proto getMCResistance $(PORT)")
 	field(SCAN, "1 second")
 	field(EGU, "mohm")
-	field(FLNK, "$(P)MC:USER")
-
-	field(SDIS, "$(P)DISABLE")
-
-	info(archive, "VAL")
-}
-
-record(calc, "$(P)MC:USER")
-{
-	field(DESC, "Mixing chamber readback for user")
-	field(INPA, "$(P)MC:TEMP MS")
-	field(INPB, "$(P)MC:RESISTANCE MS")
-	field(CALC, "(A < 0.051?B:A)")
-	field(EGU, "K")
 	field(PREC, "5")
 
 	field(SDIS, "$(P)DISABLE")
-	field(ASG, "READONLY")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
