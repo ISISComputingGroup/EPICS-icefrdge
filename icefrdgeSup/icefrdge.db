@@ -524,7 +524,7 @@ record(ai, "$(P)PRESSURE1")
 	field(DTYP, "stream")
 	field(INP, "@icefrdge.proto getPressures($(P)) $(PORT)")
 	field(SCAN, "5 second")
-	field(EGU, "Pa")
+	field(EGU, "mbar")
 	field(PREC, "2")
 
 	field(SDIS, "$(P)DISABLE")
@@ -536,7 +536,7 @@ record(ai, "$(P)PRESSURE1")
 record(ai, "$(P)PRESSURE2")
 {
 	field(DESC, "Pressure 2")
-	field(EGU, "Pa")
+	field(EGU, "mbar")
 	field(PREC, "2")
 
 	field(SDIS, "$(P)DISABLE")
@@ -548,7 +548,7 @@ record(ai, "$(P)PRESSURE2")
 record(ai, "$(P)PRESSURE3")
 {
 	field(DESC, "Pressure 3")
-	field(EGU, "Pa")
+	field(EGU, "mbar")
 	field(PREC, "2")
 
 	field(SDIS, "$(P)DISABLE")
@@ -560,7 +560,7 @@ record(ai, "$(P)PRESSURE3")
 record(ai, "$(P)PRESSURE4")
 {
 	field(DESC, "Pressure 4")
-	field(EGU, "Pa")
+	field(EGU, "mbar")
 	field(PREC, "2")
 
 	field(SDIS, "$(P)DISABLE")
