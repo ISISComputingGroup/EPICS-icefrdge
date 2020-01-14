@@ -658,7 +658,7 @@ record(ai, "$(P)MC:RESISTANCE")
 
 record(calc, "$(P)MC:RESISTANCE:CALC")
 {
-	field(DESC, "Mixing chamber resistance readback for user")
+	field(DESC, "MC resistance readback for user")
 	field(INPA, "$(P)MC:RESISTANCE CP MS")
 	field(CALC, "A/1000")
 	field(PREC, "5")
