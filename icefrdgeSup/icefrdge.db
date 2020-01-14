@@ -198,13 +198,12 @@ record(ao, "$(P)LS:MC:P:SP")
 	info(archive, "VAL")
 }
 
-record(ao, "$(P)LS:MC:I:SP")
+record(longout, "$(P)LS:MC:I:SP")
 {
 	field(DESC, "Lakeshore mc integral setpoint")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setMCIntegral($(P)) $(PORT)")
 	field(EGU, "")
-	field(PREC, "3")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -215,13 +214,12 @@ record(ao, "$(P)LS:MC:I:SP")
 	info(archive, "VAL")
 }
 
-record(ao, "$(P)LS:MC:D:SP")
+record(longout, "$(P)LS:MC:D:SP")
 {
 	field(DESC, "Lakeshore mc derivative setpoint")
 	field(DTYP, "stream")
 	field(OUT, "@icefrdge.proto setMCDerivative($(P)) $(PORT)")
 	field(EGU, "")
-	field(PREC, "3")
 
 	# Scan of readback is not frequent, so we process the readback after we set 
 	# the setpoint to update it instantly
@@ -249,11 +247,10 @@ record(ai, "$(P)LS:MC:P")
 	info(archive, "VAL")
 }
 
-record(ai, "$(P)LS:MC:I")
+record(longin, "$(P)LS:MC:I")
 {
 	field(DESC, "Lakeshore mixing chamber integral")
 	field(EGU, "")
-	field(PREC, "3")
 
     field(SDIS, "$(P)DISABLE")
 
@@ -261,11 +258,10 @@ record(ai, "$(P)LS:MC:I")
 	info(archive, "VAL")
 }
 
-record(ai, "$(P)LS:MC:D")
+record(longin, "$(P)LS:MC:D")
 {
 	field(DESC, "Lakeshore mixing chamber derivative")
 	field(EGU, "")
-	field(PREC, "3")
 
     field(SDIS, "$(P)DISABLE")
 

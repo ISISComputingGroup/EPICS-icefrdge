@@ -99,31 +99,31 @@ getLakeshoreMCTempSetpoint {
 
 setMCProportional {
 	out "LS-DIRECT-READ=PID?";
-	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)d,%(\$1LS:MC:D:RAW.A)d";
 
-	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+	out "LS-DIRECT-SET=PID %f,%(\$1LS:MC:I:RAW.A)d,%(\$1LS:MC:D:RAW.A)d";
 	in "OK";
 }
 
 setMCIntegral {
 	out "LS-DIRECT-READ=PID?";
-	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)d,%(\$1LS:MC:D:RAW.A)d";
 
-	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%f,%(\$1LS:MC:D:RAW.A)f";
+	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%d,%(\$1LS:MC:D:RAW.A)d";
 	in "OK";
 }
 
 setMCDerivative {
 	out "LS-DIRECT-READ=PID?";
-	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+	in "%(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)d,%(\$1LS:MC:D:RAW.A)d";
 
-	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)f,%f";
+	out "LS-DIRECT-SET=PID %(\$1LS:MC:P)f,%(\$1LS:MC:I:RAW.A)d,%d";
 	in "OK";
 }
 
 getMCPIDs {
 	out "LS-DIRECT-READ=PID?";
-	in "%f,%(\$1LS:MC:I:RAW.A)f,%(\$1LS:MC:D:RAW.A)f";
+	in "%f,%(\$1LS:MC:I:RAW.A)d,%(\$1LS:MC:D:RAW.A)d";
 }
 
 setMCHeaterRange {
