@@ -1,7 +1,6 @@
 record(bi, "$(P)SOLENOID_VALVE$(VALVE_NUM)")
 {
 	field(DESC, "Solenoid valve $(VALVE_NUM) status")
-	field(SDIS, "$(P)DISABLE")
 
 	field(ZNAM, "CLOSED")
 	field(ONAM, "OPEN")
