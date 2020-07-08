@@ -121,8 +121,7 @@ record(ao, "$(P)LS:MC:TEMP:SP")
 
 	field(SIML, "$(P)SIM")
     field(SIOL, "$(P)SIM:LS:MC:TEMP:SP")
-    field(SDIS, "$(P)DISABLE")
-
+ 
 	info(archive, "VAL")
 }
 
@@ -252,8 +251,6 @@ record(longin, "$(P)LS:MC:I")
 	field(DESC, "Lakeshore mixing chamber integral")
 	field(EGU, "")
 
-    field(SDIS, "$(P)DISABLE")
-
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
@@ -262,8 +259,6 @@ record(longin, "$(P)LS:MC:D")
 {
 	field(DESC, "Lakeshore mixing chamber derivative")
 	field(EGU, "")
-
-    field(SDIS, "$(P)DISABLE")
 
     info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -480,8 +475,6 @@ record(ai, "$(P)PRESSURE2")
 	field(EGU, "mbar")
 	field(PREC, "2")
 
-	field(SDIS, "$(P)DISABLE")
-
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
@@ -492,8 +485,6 @@ record(ai, "$(P)PRESSURE3")
 	field(EGU, "mbar")
 	field(PREC, "2")
 
-	field(SDIS, "$(P)DISABLE")
-
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
 }
@@ -503,8 +494,6 @@ record(ai, "$(P)PRESSURE4")
 	field(DESC, "Pressure 4")
 	field(EGU, "mbar")
 	field(PREC, "2")
-
-	field(SDIS, "$(P)DISABLE")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -518,8 +507,6 @@ record(ai, "$(P)NEEDLE_VALVE")
 
 	# The needle and proportional valve pvs are updated using record redirection, so only proportional 
 	# valve 1 needs a SCAN, INP and DTYP field.
-
-	field(SDIS, "$(P)DISABLE")
 
 	info(INTEREST, "HIGH")
 	info(archive, "VAL")
@@ -605,7 +592,6 @@ record(calc, "$(P)MC:RESISTANCE:CALC")
 	field(PREC, "5")
 	field(EGU, "kohm")
 
-	field(SDIS, "$(P)DISABLE")
 	field(ASG, "READONLY")
 
 	info(INTEREST, "HIGH")
@@ -616,7 +602,6 @@ record(calc, "$(P)MC:RESISTANCE:CALC")
 record(mbbo, "$(P)MIMIC:MODE:SP")
 {
 	field(DESC, "Mimic panel mode setpoint")
-	field(SDIS, "$(P)DISABLE")
 
 	field(ZRVL, "0")
 	field(ONVL, "1")
@@ -670,7 +655,6 @@ record(bo, "$(P)MIMIC:STOP:SP")
 record(bo, "$(P)MIMIC:START:SP") 
 {
 	field(DESC, "Mimic panel Start setpoint")
-	field(SDIS, "$(P)DISABLE")
 
 	field(FLNK, "$(P)MIMIC:SEQUENCE:_CALC")
 
@@ -681,7 +665,6 @@ record(bo, "$(P)MIMIC:START:SP")
 record(mbbo, "$(P)MIMIC:SEQUENCE:SP")
 {
 	field(DESC, "Mimic panel Sequence setpoint")
-	field(SDIS, "$(P)DISABLE")
 
 	field(ZRVL, "0")
 	field(ONVL, "1")
@@ -759,8 +742,6 @@ record(ao, "$(P)MIMIC:SEQUENCE:TEMP:SP")
 {
 	field(DESC, "Mimic panel Sequence temp setpoint")
 	field(EGU, "K")
-
-	field(SDIS, "$(P)DISABLE")
 
 	info(archive, "VAL")
 }
@@ -916,7 +897,6 @@ record(bo, "$(P)HE3:PUMP:SP")
 record(bi, "$(P)HE3:PUMP") 
 {
 	field(DESC, "Helium 3 pump on/off")
-	field(SDIS, "$(P)DISABLE")
 
 	field(ZNAM, "OFF")
 	field(ONAM, "ON")
@@ -943,7 +923,6 @@ record(bo, "$(P)ROOTS:SP")
 record(bi, "$(P)ROOTS") 
 {
 	field(DESC, "Roots pump on/off")
-	field(SDIS, "$(P)DISABLE")
 
 	field(ZNAM, "OFF")
 	field(ONAM, "ON")
